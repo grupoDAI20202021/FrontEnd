@@ -13695,3 +13695,10 @@ span.flatpickr-weekday {
 }
 
 /*                    custom css*/
+
+#dashboardActivity{
+	padding-top: 4px;
+}
+#dashboardActivityicon{
+	padding-top: 9px;
+}
