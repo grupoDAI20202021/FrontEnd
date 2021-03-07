@@ -12078,6 +12078,7 @@ screen and (-ms-high-contrast:active) {
 	display: flex;
 	height: 100vh;
 	flex-direction: column
+	
 }
 
 .sidebar-nav {
@@ -13584,6 +13585,7 @@ span.flatpickr-weekday {
 	flex-direction: column;
 	height: 100vh;
 	padding-bottom: 0!important
+	
 }
 
 [data-simplebar] {
@@ -13757,3 +13759,16 @@ span.flatpickr-weekday {
     color: #333;
     margin-right: 5px;
   }
+
+  .new-activity-btn {
+	height: 100%;
+    width: max-content;
+    font-size: 14px;
+    background-color: #ff6618;
+    color: #ffffff !important;
+    border: 0;
+    border-radius: 25px;
+    font-weight: bold;
+    align-items: center;
+  }
+  
