@@ -13695,14 +13695,14 @@ span.flatpickr-weekday {
 }
 
 /*                    custom css*/
-
+/*  					adminDashboard */
 #dashboardActivity{
 	padding-top: 4px;
 }
 #dashboardActivityicon{
 	padding-top: 9px;
 }
-
+/* 					calendar*/
 .dropbtn {
 	background-color: #4CAF50;
 	color: white;
@@ -13749,5 +13749,11 @@ span.flatpickr-weekday {
 	background-color: #3e8e41;
   }
  
-  
-  
+
+  .calendar-btn{
+	border-radius: 25px;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    color: #333;
+    margin-right: 5px;
+  }
