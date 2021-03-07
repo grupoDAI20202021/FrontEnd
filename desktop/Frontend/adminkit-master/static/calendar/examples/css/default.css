@@ -1,9 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
 
-body {
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 12px;
-}
+
+
 
 /**  custom bootstrap - start */
 .btn {
@@ -72,19 +69,20 @@ body {
 }
 
 #lnb {
-  position: absolute;
-  width: 200px;
-  top: 49px;
-  bottom: 0;
-  border-right: 1px solid #d5d5d5;
-  padding: 12px 10px;
-  background: #fafafa;
+     /* position: absolute; */
+     width: 150px;
+     top: 49px;
+     height:695px;
+     bottom: 0;
+     border-right: 1px solid #d5d5d5;
+     padding: 12px 10px;
+     background: #ffffff;
 }
 
 #right {
   position: absolute;
   left: 200px;
-  top: 49px;
+  top: -6px;
   right: 0;
   bottom: 0;
 }

@@ -9,9 +9,10 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 	<title>City4Kids website</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="../img/icons/icon-48x48.png" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	
     <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css">
     <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css">
     <link rel="stylesheet" type="text/css" href="../calendar/dist/tui-calendar.css">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="../calendar/examples/css/icons.css">
 	
     <script src="https://kit.fontawesome.com/f21b1162f6.js" crossorigin="anonymous"></script>
+	
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -163,8 +165,10 @@
 				</div>
 			</nav>
 			<main class="content">
-				
+				<div class="row ">
 					<div class ="card">
+					<div class="col-12 col-md-2 col-xxl-3 d-flex order-2 order-xxl-3" style="width: fit-content">
+					
 					
 
 					<div id="lnb">
@@ -185,10 +189,9 @@
 							<div id="calendarList" class="lnb-calendars-d1">
 							</div>
 						</div>
-						<div class="lnb-footer">
-							© NHN Corp.
-						</div>
 					</div>
+				</div>
+				<!--<div class="col-12 col-md-10 col-xxl-3 d-flex order-2 order-xxl-3">-->
 					<div id="right">
 						<div id="menu">
 							<span class="dropdown">
@@ -256,10 +259,11 @@
 							</span>
 							<span id="renderRange" class="render-range"></span>
 						</div>
-						<div id="calendar"></div>
+						<div id="calendar" style="height: 500px;"></div>
 					</div>
 				</div>
-
+			</div>
+		<!--</div>-->
 					
 			</main>
 
