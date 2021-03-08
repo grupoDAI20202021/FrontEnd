@@ -11981,7 +11981,7 @@ a.list-group-item {
 }
 
 .nav-item .indicator {
-	background: #3b7ddd;
+	background: #1A82C4;
 	box-shadow: 0 .1rem .2rem rgba(0, 0, 0, .05);
 	border-radius: 50%;
 	display: block;
@@ -12114,7 +12114,7 @@ a.sidebar-link svg {
 }
 
 .sidebar-link:hover {
-	background: #222e3c;
+	background: #1A82C4;
 	border-left-color: transparent
 }
 
@@ -13751,7 +13751,6 @@ span.flatpickr-weekday {
 	background-color: #3e8e41;
   }
  
-
   .calendar-btn{
 	border-radius: 25px;
     border: 1px solid #ddd;
@@ -13764,7 +13763,7 @@ span.flatpickr-weekday {
 	height: 100%;
     width: max-content;
     font-size: 14px;
-    background-color: #ff6618;
+    background-color: #1A82C4;
     color: #ffffff !important;
     border: 0;
     border-radius: 25px;
