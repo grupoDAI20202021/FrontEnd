@@ -1,0 +1,244 @@
+*{
+    margin:0;
+    padding:0;
+}
+.banner{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/avatars/background.jpg) ;
+}
+.navbar{
+   width: 85%;
+   margin: auto;
+   padding: 35px 0; 
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.logo{
+    width: 180px;
+    cursor: pointer;
+}
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: #808080;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: 500;
+}
+.navbar ul li::after{
+    content: '';
+    height: 2px;
+    width: 0;
+    background: #808080;
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    transition: 0.5s;
+}
+.navbar ul li:hover::after{
+    width:100%;
+}
+.footer{
+    width: 60%;
+    margin: auto;
+    padding: 25px 0; 
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    position:absolute;
+    bottom: 0;
+    left: 22%;
+ }
+ .card{
+    flex-direction: row;
+    display: flex;
+    border-radius:60px;
+    box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.05);
+    width: 50%;
+    height: 60%;
+    margin: auto;
+    overflow: hidden;
+}
+.imagem{
+    width: 45%;
+    height: 100%;
+    background-color:#b8b8b8;
+}
+.content{
+    width: 55%;
+    height:100%;
+    background-color: #EFEFEF;
+}
+ .card-in-top {
+	-webkit-animation: slide-in-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both ;
+	        animation: slide-in-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both ;
+}
+
+ @-webkit-keyframes slide-in-top {
+    0% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-top {
+    0% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .logo2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 55%;
+    padding-top: 52%;
+    opacity:95%;
+  }
+  .circle {
+    position:absolute;  
+    display:block;
+    width: 35%;
+    padding-top: 20%;
+    left: 35px;
+    bottom: 105px;
+  }
+  .objectivs{
+    color: #1982C4;
+    position: absolute;
+    display: block;
+    left: 480px;
+    top: 40px;
+    font-family: sans-serif;
+  }
+  .text{
+      position: absolute;
+      text-align:justify;
+      font-size:14px;
+      top: 100px;
+      margin-left: 20px ;
+      margin-right: 20px;
+      font-family: sans-serif;
+  }
+  .team{
+    color: #1982C4;
+    position: absolute;
+    display: block;
+    left: 440px;
+    top: 190px;
+    font-family: sans-serif;
+
+ }
+.photo{
+    display: block;
+    position:absolute;
+    left:390px;
+    width:65px;
+    top:232px;
+}
+.photo2{
+    display: block;
+    position:absolute;
+    left:480px;
+    width:65px;
+    top:232px;
+   
+}
+.photo3{
+    display: block;
+    position:absolute;
+    left:570px;
+    width:65px;
+    top:232px;
+   
+}
+.photo4{
+    display: block;
+    position:absolute;
+    left:660px;
+    top:232px;
+    width:65px;
+   
+}
+.photo5{
+    display: block;
+    position:absolute;
+    top:310px;
+    width:65px;
+    left:390px;
+   
+}
+.photo6{
+    display: block;
+    position:absolute;
+    top:310px;
+    left: 480px;
+    width:65px;
+  
+}
+.photo7{
+    display: block;
+    position:absolute;
+    top:310px;
+    width:65px;
+    left:570px;
+  
+}
+.photo8{
+    display: block;
+    position:absolute;
+    top:310px;
+    width:65px;
+    left:660px;
+}
+.photo9{
+    display: block;
+    position:absolute;
+    top:388px;
+    width:65px;
+    left:390px;
+  
+}
+.photo10{
+    display: block;
+    position:absolute;
+    top:388px;
+    width:65px;
+    left:480px;
+ 
+}
+.photo11{
+    display: block;
+    position:absolute;
+    top:388px;
+    width:65px;
+    left:570px;
+}
+  
+.photo1{
+    display: block;
+    position: absolute;
+    top:388px;
+    width:65px;
+    left:660px;
+}
+
+ 
