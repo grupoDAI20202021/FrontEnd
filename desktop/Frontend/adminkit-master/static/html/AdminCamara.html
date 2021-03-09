@@ -161,11 +161,35 @@
 			</nav>
 			<main class="content">
 				<div class="container-fluid p-0">
-					<div class="row mb-2 mb-xl-3">
+					<div class="row mb-2 mb-xl-2">
+						<div id="add-town-hall" class="card">
+							<div class="card-body">
+								<h5>sdv
+								</h5>
+								<form>
+									<input>
+								</input>
+								<input>
+								</input>
+								<input>
+								</input>
+								<input>
+								</input>
+								<input>
+								</input>
+								</form>
+
+
+							</div>
+							</div>
+
+						
+					</div>
+					<div class="row mb-2 mb-xl-2">
 						<div id="layoutSidenav_content" class="card">
 							<div class="card-body">
-								<div class="table-responsive">
-									<h1 id=listoc-title>Lista de Centralistas</h1>
+								<div class="table-responsive table-hover">
+									<h1 id=listoc-title>Câmaras Municipais</h1>
 									<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 										<table class="table table-bordered supTable" id="Table-town-hall" width="100%" cellspacing="0">
 											<thead>
@@ -174,20 +198,22 @@
 													<th>Morada</th>
 													<th>Contacto</th>
 													<th>Cartão de cidadão</th>
-													<th>Salário €</th>
 												</tr>
 											</thead>
 											<tbody>
 											</tbody>
 										</table>
 
-				
+								<div class="row">
+									<input id="cam-add" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="reset" value="Adicionar"></input>
 										<div class="col-sm-3 navbar-align ">
+											
 											<input id="cen-delete" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="reset" value="Eliminar"></input>
 											<input id="view-data-cen" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="submit" value="Visualizar Dados" href=""></input>
 										</div>
 				
 									</div>
+								</div>
 						</div>
 					</div>
 			</main>
@@ -222,8 +248,7 @@
 		</div>
 	</div>
 
-	<script src="../js/app.js"></script>
-	<script src="../js/adminCamara.js"></script>
+	
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
                     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -232,6 +257,8 @@
                     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
                     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
                     <script src="../vendor/bootstrap/js1/datatables-demo.js"></script>
+					<script src="../js/app.js"></script>
+	<script src="../js/adminCamara.js"></script>
 
 </body>
 
