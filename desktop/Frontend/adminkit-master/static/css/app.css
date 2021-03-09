@@ -318,7 +318,7 @@ input,
 optgroup,
 select,
 textarea {
-	margin: 0;
+	margin: 0 ;
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit
@@ -1944,6 +1944,7 @@ progress {
 }
 
 .table-responsive {
+	display:table;
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch
 }
@@ -11981,7 +11982,7 @@ a.list-group-item {
 }
 
 .nav-item .indicator {
-	background: #3b7ddd;
+	background: #1A82C4;
 	box-shadow: 0 .1rem .2rem rgba(0, 0, 0, .05);
 	border-radius: 50%;
 	display: block;
@@ -12078,6 +12079,7 @@ screen and (-ms-high-contrast:active) {
 	display: flex;
 	height: 100vh;
 	flex-direction: column
+	
 }
 
 .sidebar-nav {
@@ -12113,7 +12115,7 @@ a.sidebar-link svg {
 }
 
 .sidebar-link:hover {
-	background: #222e3c;
+	background: #1A82C4;
 	border-left-color: transparent
 }
 
@@ -13584,6 +13586,7 @@ span.flatpickr-weekday {
 	flex-direction: column;
 	height: 100vh;
 	padding-bottom: 0!important
+	
 }
 
 [data-simplebar] {
@@ -13749,7 +13752,6 @@ span.flatpickr-weekday {
 	background-color: #3e8e41;
   }
  
-
   .calendar-btn{
 	border-radius: 25px;
     border: 1px solid #ddd;
@@ -13757,4 +13759,3 @@ span.flatpickr-weekday {
     color: #333;
     margin-right: 5px;
   }
-  
