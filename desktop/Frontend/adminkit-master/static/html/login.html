@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<title>City4Kids website</title>
+    <link rel="stylesheet" href="../css/login.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/login.js"></script>
+</head>
+<body>
+	<div class="banner">
+		<div class="navbar">
+			<img src="..\img\avatars\logo.jpg" class="logo">
+			<ul>
+				<li><a href="../html/index.html">Página Inicial</a></li>
+				<li><a href="../html/contacts.html">Contactos</a></li>
+				<li><a href="../html/about.html">Sobre</a></li>
+				<li><a href="../html/login.html">Iniciar Sessão</a></li>
+			</ul>
+		</div>
+		<div class="container card-in-top"  id="container">
+			<div class="form-container sign-up-container">
+				<form action="#">
+					<h1>Create Account</h1>
+					<div class="social-container">
+						<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+						<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+						<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+					</div>
+					<span>or use your email for registration</span>
+					<input type="text" placeholder="Name" />
+					<input type="email" placeholder="Email" />
+					<input type="password" placeholder="Password" />
+					<button>Sign Up</button>
+				</form>
+			</div>
+			<div class="form-container sign-in-container">
+				<form action="#">
+					<h1>Sign in</h1>
+					<div class="social-container">
+						<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+						<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+						<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+					</div>
+					<span>or use your account</span>
+					<input type="email" placeholder="Email" />
+					<input type="password" placeholder="Password" />
+					<a href="#">Forgot your password?</a>
+					<button>Sign In</button>
+				</form>
+			</div>
+			<div class="overlay-container">
+				<div class="overlay">
+					<div class="overlay-panel overlay-left">
+						<h1>Welcome Back!</h1>
+						<p>To keep connected with us please login with your personal info</p>
+						<button onclick="signIn()" class="ghost" id="signIn">Sign In</button>
+					</div>
+					<div class="overlay-panel overlay-right">
+						<h1>Hello, Friend!</h1>
+						<p>Enter your personal details and start journey with us</p>
+						<button onclick="signUp()" class="ghost" id="signUp">Sign Up</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<img src="..\img\avatars\patr1.jpg" class="patr1">
+			<img src="..\img\avatars\patr2.jpg" class="patr2">
+			<img src="..\img\avatars\patr3.jpg" class="patr3">
+			<img src="..\img\avatars\patr4.jpg" class="patr4">
+			<img src="..\img\avatars\patr5.jpg" class="patr5">
+		</div>
+
+	</div>
+</body>
+</html>

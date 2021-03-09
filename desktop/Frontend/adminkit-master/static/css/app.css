@@ -13759,16 +13759,3 @@ span.flatpickr-weekday {
     color: #333;
     margin-right: 5px;
   }
-
-  .new-activity-btn {
-	height: 100%;
-    width: max-content;
-    font-size: 14px;
-    background-color: #1A82C4;
-    color: #ffffff !important;
-    border: 0;
-    border-radius: 25px;
-    font-weight: bold;
-    align-items: center;
-  }
-  
