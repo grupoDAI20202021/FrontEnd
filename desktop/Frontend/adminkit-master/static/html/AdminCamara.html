@@ -28,7 +28,7 @@
           <span class="align-middle">City4Kids</span>
         </a>
 				<ul class="sidebar-nav">
-					<li class="sidebar-item active">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="index.html">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
@@ -39,7 +39,7 @@
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item active">
 						<a class="sidebar-link" href="pages-settings.html">
               <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Câmaras Municipais</span>
             </a>
@@ -162,28 +162,29 @@
 			<main class="content">
 				
 				<div class="container-fluid p-0">
-					<div class="row mb-2 mb-xl-2 col-8  mx-sm-auto">
-						<div id="add-town-hall" class="card">
-							<div class="card-body">
+					<div id="addTown"class="row mb-2 mb-xl-2 col-3  mx-sm-auto ">
+						<div id="add-town-hall" class="card custom-form">
+							<div class="card-body ">
 								<div class="col-6 mx-sm-auto">
-									<h3><strong>Adicionar</strong></h3>
+									<h3 ><strong class="blue-heading">Adicionar</strong> </h3>
+									
 								</div>
-								<form class="input-group form-floating">
-									<input>
+								<form class="mx-sm-auto ">
+									<input class=" form-control mx-sm-auto w-100 my-2 custom-input " placeholder="Email">
 								</input>
-								<input>
+									<input class=" form-control mx-sm-auto w-100 my-2 custom-input " placeholder="Nome">
 								</input>
-								<input>
+								<input type="text" class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Morada">
 								</input>
-								<input>
+								<input type ="password"class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Password">
 								</input>
-								<input>
+								<input type="password" class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Confirmar password">
 								</input>
+								<input type="button" class="new-activity-btn my-2  mx-sm-auto w-50 "value="Adicionar"> </input>
 								</form>
 
-
-							
 							</div>
+							<i class="align-middle ms-auto fixed-top-right" data-feather="x-circle"></i>
 						</div>
 						
 					</div>
