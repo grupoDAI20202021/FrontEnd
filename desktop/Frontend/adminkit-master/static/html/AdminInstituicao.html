@@ -162,7 +162,7 @@
 			<main class="content">
 				
 				<div class="container-fluid p-0">
-					<div id="addTown"class="row mb-2 mb-xl-2 col-3  mx-sm-auto ">
+					<div id="addTownForm"class="row mb-2 mb-xl-2 col-3  mx-sm-auto ">
 						<div id="add-town-hall" class="card custom-form">
 							<div class="card-body ">
 								<div class="col-6 mx-sm-auto">
@@ -187,7 +187,7 @@
 								</form>
 
 							</div>
-							<i class="align-middle ms-auto fixed-top-right" data-feather="x-circle"></i>
+							<i id="closeForm" class="align-middle ms-auto fixed-top-right" data-feather="x-circle"></i>
 						</div>
 						
 					</div>
@@ -195,15 +195,15 @@
 						<div id="layoutSidenav_content" class="card">
 							<div class="card-body">
 								<div class="table-responsive table-hover">
-									<h1 id=listoc-title>Câmaras Municipais</h1>
+									<h1 id=listoc-title>Instituições</h1>
 									<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-										<table class="table table-bordered supTable" id="Table-town-hall" width="100%" cellspacing="0">
+										<table class="table table-bordered supTable" id="Table-instituition" width="100%" cellspacing="0">
 											<thead>
 												<tr>
+													<th>Email</th>
 													<th>Nome</th>
 													<th>Morada</th>
-													<th>Contacto</th>
-													<th>Cartão de cidadão</th>
+													<th>Câmara Municipal</th>
 												</tr>
 											</thead>
 											<tbody>

@@ -162,7 +162,7 @@
 			<main class="content">
 				
 				<div class="container-fluid p-0">
-					<div id="addTown"class="row mb-2 mb-xl-2 col-3  mx-sm-auto ">
+					<div id="addTownForm" class="row mb-2 mb-xl-2 col-3  mx-sm-auto d-none ">
 						<div id="add-town-hall" class="card custom-form">
 							<div class="card-body ">
 								<div class="col-6 mx-sm-auto">
@@ -184,7 +184,7 @@
 								</form>
 
 							</div>
-							<i class="align-middle ms-auto fixed-top-right" data-feather="x-circle"></i>
+							<i id="closeForm" class="align-middle ms-auto fixed-top-right" data-feather="x-circle"></i>
 						</div>
 						
 					</div>
@@ -197,10 +197,10 @@
 										<table class="table table-bordered supTable" id="Table-town-hall" width="100%" cellspacing="0">
 											<thead>
 												<tr>
+													<th>Email</th>
 													<th>Nome</th>
 													<th>Morada</th>
-													<th>Contacto</th>
-													<th>Cartão de cidadão</th>
+													
 												</tr>
 											</thead>
 											<tbody>

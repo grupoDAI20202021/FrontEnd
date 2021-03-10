@@ -1,3 +1,9 @@
+let showForm= document.getElementById("cam-add");
+showForm.onclick= openForm;
+
+let hideForm= document.getElementById("closeForm");
+hideForm.addEventListener("click", closeForm);
+
 $(document).ready(function() {
   let cent= new Array("helo","byek");
     $('#Table-town-hall').DataTable({
@@ -48,3 +54,12 @@ $(document).ready(function() {
         linha.classList.toggle("selecionado");
       }
   });
+
+  function openForm(){
+    
+document.getElementById("addTownForm").className= "row mb-2 mb-xl-2 col-3  mx-sm-auto";
+  }
+  function closeForm(){
+    console.log("ewf") ;
+    document.getElementById("addTownForm").className= "row mb-2 mb-xl-2 col-3  mx-sm-auto d-none";
+      }
