@@ -1,20 +1,20 @@
-let showForm= document.getElementById("cam-add");
+let showForm= document.getElementById("instituition-add");
 showForm.onclick= openForm;
 
 let hideForm= document.getElementById("close-Form");
 hideForm.addEventListener("click", closeForm);
 
 function openForm(){
-  document.getElementById("addTownForm").className= "row mb-2 mb-xl-2 col-3 addForm mx-sm-auto";
+  document.getElementById("addInstituitionForm").className= "row mb-2 mb-xl-2 col-3  addForm mx-sm-auto";
    }
   
 function closeForm(){
-    document.getElementById("addTownForm").className= "row mb-2 mb-xl-2 col-3 addForm mx-sm-auto d-none";
+    document.getElementById("addInstituitionForm").className= "row mb-2 mb-xl-2 col-3 addForm mx-sm-auto d-none";
   }
 
 $(document).ready(function() {
   let cent= new Array("helo","byek");
-    $('#Table-town-hall').DataTable({
+    $('#Table-instituition').DataTable({
       autoFill:true,
       "language": {
         "lengthMenu": "Mostrar _MENU_ câmara por página",
@@ -39,7 +39,7 @@ $(document).ready(function() {
          "searchable": false
        }]*/
     });
-    let tabela = document.getElementById("Table-town-hall");
+    let tabela = document.getElementById("Table-instituition");
       let linhas = tabela.getElementsByTagName("tr");
 
       for (let i = 0; i < linhas.length; i++) {

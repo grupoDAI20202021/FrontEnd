@@ -5709,7 +5709,9 @@ fieldset:disabled .btn {
 .w-25 {
 	width: 25%!important
 }
-
+.w-33{
+	width: 32% !important;
+}
 .w-50 {
 	width: 50%!important
 }
@@ -13778,14 +13780,14 @@ span.flatpickr-weekday {
   .new-activity-btn{
 	
     font-size: 14px;
-    background-color: #3b7ddd;
+    background-color: #1982C4;
     color: white!important;
     border: 0;
     border-radius: 25px;
     font-weight: bold;
   }
 /*                              AdminCamara*/
-  #addTownForm{
+  .addForm{
 	position: absolute;
 	margin-left: auto;
 	margin-right: auto;
@@ -13794,4 +13796,25 @@ span.flatpickr-weekday {
 	text-align: center;
 	z-index: 1031;
 	
+  }
+
+  /*                              AdminCamara*/
+
+  .sponsor-div{
+	  height: 200px;
+	  border: 2px black;
+	  background-color: #FAFAFA;
+	  margin-left:2%;
+	  border-radius: 25px;
+	  -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 4px 6px -6px #777;
+  }
+  .sponsor-div-delete{
+	position: relative;
+    left: 82%;
+  }
+  .sponsor-img{
+	  width:150px;
+	  height:112.5px ;
   }
