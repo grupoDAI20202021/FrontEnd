@@ -44,7 +44,7 @@
 
 body {
 	margin: 0;
-	font-family: var(--bs-font-sans-serif);
+	  font-family: 'Roboto', sans-serif;
 	font-size: .875rem;
 	font-weight: 400;
 	line-height: 1.5;
@@ -13702,6 +13702,7 @@ span.flatpickr-weekday {
 /*                    custom css*/
 .blue-heading{
 	color: #3b7ddd;
+	font: bold;
 }
 .custom-input{
 	border-radius: 25px;
@@ -13808,7 +13809,7 @@ span.flatpickr-weekday {
 	  border-radius: 25px;
 	  -webkit-box-shadow: 0 10px 6px -6px #777;
      -moz-box-shadow: 0 10px 6px -6px #777;
-          box-shadow: 0 4px 6px -6px #777;
+      box-shadow: 0 4px 6px -6px #777;
   }
   .sponsor-div-delete{
 	position: relative;
@@ -13817,4 +13818,14 @@ span.flatpickr-weekday {
   .sponsor-img{
 	  width:150px;
 	  height:112.5px ;
+	  box-shadow: 0 4px 6px -6px #777;
+  }
+  .sponsor-title{
+	  color:#707070;
+  }
+  .sponsor-data-span{
+	  color:#C8C8C8;
+  }
+  .add-sponsor-img-div{
+	  background-color: white;
   }

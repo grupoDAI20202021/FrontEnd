@@ -9,7 +9,7 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 	<title>City4Kids website</title>
-	
+	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="../img/icons/icon-48x48.png" />
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -30,27 +30,26 @@
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="CamaraDashboard.html">
+				<a class="sidebar-brand" href="InsituicaoDashboard.html">
           <span class="align-middle">City4Kids</span>
         </a>
 				<ul class="sidebar-nav">
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="CamaraDashboard.html">
+						<a class="sidebar-link" href="InstituicaoDashboard.html">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 					<li class="sidebar-item active">
-						<a class="sidebar-link" href="CamaraCalendar.html">
+						<a class="sidebar-link" href="InstituicaoCalendar.html">
               <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Calendario</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="CamaraPatrocinador.html">
-              <i class="align-middle" data-feather="package"></i> <span class="align-middle">Patrocinadores</span>
+						<a class="sidebar-link" href="InstituicaoAtividade.html">
+              <i class="align-middle" data-feather="award"></i> <span class="align-middle">Avaliar Atividades</span>
             </a>
 					</li>
-
 					
 				</ul>
 			</div>
@@ -144,7 +143,7 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-              <span class="text-dark">Câmara Municipal de Braga</span>
+              <span class="text-dark">Charles Hall</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
@@ -167,7 +166,10 @@
 					
 
 					<div id="lnb">
-						
+                        <div class="lnb-new-schedule">
+                            <button id="btn-new-schedule" type="button" class="btn btn-default btn-block lnb-new-schedule-btn new-activity-btn" data-toggle="modal">
+                                Nova atividade</button>
+                        </div>
 						<div id="lnb-calendars" class="lnb-calendars">
 							<div>
 								<div class="lnb-calendars-item">
