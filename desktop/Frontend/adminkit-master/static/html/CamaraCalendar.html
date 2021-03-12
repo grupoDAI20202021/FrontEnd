@@ -8,15 +8,20 @@
 	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<title>City4Kids website</title>
 	
 	<link rel="shortcut icon" href="../img/icons/icon-48x48.png" />
-	<link href="../vendor/bootstrap/css1/styles.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-	<title>City4Kids website</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css">
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css">
+    <link rel="stylesheet" type="text/css" href="../calendar/dist/tui-calendar.css">
+    <link rel="stylesheet" type="text/css" href="../calendar/examples/css/default.css">
+    <link rel="stylesheet" type="text/css" href="../calendar/examples/css/icons.css">
+	
     <script src="https://kit.fontawesome.com/f21b1162f6.js" crossorigin="anonymous"></script>
+	
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -25,30 +30,24 @@
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="AdminDashboard.html">
+				<a class="sidebar-brand" href="CamaraDashboard.html">
           <span class="align-middle">City4Kids</span>
         </a>
 				<ul class="sidebar-nav">
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="AdminDashboard.html">
+						<a class="sidebar-link" href="CamaraDashboard.html">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
-					<li class="sidebar-item ">
-						<a class="sidebar-link" href="AdminCalendar.html">
+					<li class="sidebar-item active">
+						<a class="sidebar-link" href="CamaraCalendar.html">
               <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Calendario</span>
             </a>
 					</li>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="AdminCamara.html">
-              <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Câmaras Municipais</span>
-            </a>
-					</li>
-
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="AdminInstituicao.html">
-              <i class="align-middle" data-feather="home"></i> <span class="align-middle">Instituições</span>
+						<a class="sidebar-link" href="CamaraPatrocinador.html">
+              <i class="align-middle" data-feather="package"></i> <span class="align-middle">Patrocinadores</span>
             </a>
 					</li>
 
@@ -145,7 +144,7 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-              <span class="text-dark">Charles Hall</span>
+              <span class="text-dark">Câmara Municipal de Braga</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
@@ -161,67 +160,100 @@
 				</div>
 			</nav>
 			<main class="content">
-				
-				<div class="container-fluid p-0">
-					<div id="addTownForm" class="row mb-2 mb-xl-2 col-3 addForm  mx-sm-auto d-none ">
-						<div id="add-town-hall" class="card custom-form">
-							<div class="card-body ">
-								<div class="col-6 mx-sm-auto">
-									<h3 ><strong class="blue-heading">Adicionar</strong> </h3>
-									
-								</div>
-								<form class="mx-sm-auto ">
-									<input class=" form-control mx-sm-auto w-100 my-2 custom-input " placeholder="Email">
-								</input>
-									<input class=" form-control mx-sm-auto w-100 my-2 custom-input " placeholder="Nome">
-								</input>
-								<input type="text" class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Morada">
-								</input>
-								<input type ="password"class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Password">
-								</input>
-								<input type="password" class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Confirmar password">
-								</input>
-								<input type="button" class="new-activity-btn my-2  mx-sm-auto w-50 "value="Adicionar"> </input>
-								</form>
+				<div class="row ">
+					<div class ="card">
+					<div class="col-12 col-md-2 col-xxl-3 d-flex order-2 order-xxl-3" style="width: fit-content">
+					
+					
 
-							</div>
-							<div id="close-Form">
-							<i class="align-middle ms-auto fixed-top-right" data-feather="x-circle"></i>
-						</div>
-						</div>
+					<div id="lnb">
 						
-					</div>
-					<div class="row mb-2 mb-xl-2">
-						<div id="layoutSidenav_content" class="card">
-							<div class="card-body">
-								<div class="table-responsive table-hover">
-									<h1 id="listoc-title" class="blue-heading">Câmaras Municipais</h1>
-									<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-										<table class="table table-bordered supTable" id="Table-town-hall" width="100%" cellspacing="0">
-											<thead>
-												<tr>
-													<th>Email</th>
-													<th>Nome</th>
-													<th>Morada</th>
-													
-												</tr>
-											</thead>
-											<tbody>
-											</tbody>
-										</table>
-
-								<div class="row">
-									<input id="cam-add" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="reset" value="Adicionar"></input>
-										<div class="col-sm-3 navbar-align ">
-											
-											<input id="cen-delete" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="reset" value="Eliminar"></input>
-											<input id="view-data-cen" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="submit" value="Visualizar Dados" href=""></input>
-										</div>
-				
-									</div>
+						<div id="lnb-calendars" class="lnb-calendars">
+							<div>
+								<div class="lnb-calendars-item">
+									<label>
+										<input class="tui-full-calendar-checkbox-square" type="checkbox" value="all" checked>
+										<span></span>
+										<strong>Ver todos</strong>
+									</label>
 								</div>
+							</div>
+							<div id="calendarList" class="lnb-calendars-d1">
+							</div>
 						</div>
 					</div>
+				</div>
+					<div id="right">
+						<div id="menu">
+							<span class="dropdown">
+								<button id="dropdownMenu-calendarType" class="btn btn-default btn-sm dropdown-toggle calendar-btn" type="button" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="true">
+									<i id="calendarTypeIcon" class="calendar-icon ic_view_month" style="margin-right: 4px;"></i>
+									<span id="calendarTypeName">Dropdown</span>&nbsp;
+								</button>
+								<ul class="dropdown-menu dropdown-content" role="menu" aria-labelledby="dropdownMenu-calendarType">
+									<li role="presentation">
+										<a class="dropdown-menu-title" role="menuitem" data-action="toggle-daily">
+											<i class="calendar-icon ic_view_day"></i>Dia
+										</a>
+									</li>
+									<li role="presentation">
+										<a class="dropdown-menu-title" role="menuitem" data-action="toggle-weekly">
+											<i class="calendar-icon ic_view_week"></i>Semana
+										</a>
+									</li>
+									<li role="presentation">
+										<a class="dropdown-menu-title" role="menuitem" data-action="toggle-monthly">
+											<i class="calendar-icon ic_view_month"></i>Mês
+										</a>
+									</li>
+									<li role="presentation">
+										<a class="dropdown-menu-title" role="menuitem" data-action="toggle-weeks2">
+											<i class="calendar-icon ic_view_week"></i>2 semanas
+										</a>
+									</li>
+									<li role="presentation">
+										<a class="dropdown-menu-title" role="menuitem" data-action="toggle-weeks3">
+											<i class="calendar-icon ic_view_week"></i>3 semanas
+										</a>
+									</li>
+									<li role="presentation" class="dropdown-divider"></li>
+									<li role="presentation">
+										<a role="menuitem" data-action="toggle-workweek">
+											<input type="checkbox" class="tui-full-calendar-checkbox-square" value="toggle-workweek" checked>
+											<span class="checkbox-title"></span>Mostrar fim de semana
+										</a>
+									</li>
+									<li role="presentation">
+										<a role="menuitem" data-action="toggle-start-day-1">
+											<input type="checkbox" class="tui-full-calendar-checkbox-square" value="toggle-start-day-1">
+											<span class="checkbox-title"></span>Começar no domingo
+										</a>
+									</li>
+									<li role="presentation">
+										<a role="menuitem" data-action="toggle-narrow-weekend">
+											<input type="checkbox" class="tui-full-calendar-checkbox-square" value="toggle-narrow-weekend">
+											<span class="checkbox-title"></span>Narrower than weekdays
+										</a>
+									</li>
+								</ul>
+							</span>
+							<span id="menu-navi">
+								<button type="button" class="btn btn-default btn-sm move-today calendar-btn" data-action="move-today">Hoje</button>
+								<button type="button" class="btn btn-default btn-sm move-day calendar-btn" data-action="move-prev">
+									<i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
+								</button>
+								<button type="button" class="btn btn-default btn-sm move-day calendar-btn" data-action="move-next">
+									<i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
+								</button>
+							</span>
+							<span id="renderRange" class="render-range"></span>
+						</div>
+						<div id="calendar" style="height: 500px;"></div>
+					</div>
+				</div>
+			</div>
+					
 			</main>
 
 			<footer class="footer">
@@ -253,18 +285,21 @@
 			</footer>
 		</div>
 	</div>
-
 	
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-                   <!-- <script src="js/list-centralist.js"></script>-->
-                    <script src="../js/scripts.js"></script>
-                    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-                    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-                    <script src="../vendor/bootstrap/js1/datatables-demo.js"></script>
-					<script src="../js/app.js"></script>
-	<script src="../js/adminCamara.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
+    <script src="https://uicdn.toast.com/tui.time-picker/v2.0.3/tui-time-picker.min.js"></script>
+    <script src="https://uicdn.toast.com/tui.date-picker/v4.0.3/tui-date-picker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.13/chance.min.js"></script>
+    <script src="../calendar/dist/tui-calendar.js"></script>
+    <script src="../calendar/examples/js/data/calendars.js"></script>
+    <script src="../calendar/examples/js/data/schedules.js"></script>
+     <script src="../calendar/examples/js/theme/dooray.js"></script> 
+    <script src="../calendar/examples/js/app.js"></script>
+	<script src="../js/app.js"></script>
 
 </body>
 

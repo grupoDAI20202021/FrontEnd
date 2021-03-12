@@ -8,10 +8,11 @@
 	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-	
 	<link rel="shortcut icon" href="../img/icons/icon-48x48.png" />
+	
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 	<link href="../vendor/bootstrap/css1/styles.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -34,19 +35,19 @@
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
-					<li class="sidebar-item ">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="AdminCalendar.html">
               <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Calendario</span>
             </a>
 					</li>
 
-					<li class="sidebar-item active">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="AdminCamara.html">
               <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Câmaras Municipais</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item active">
 						<a class="sidebar-link" href="AdminInstituicao.html">
               <i class="align-middle" data-feather="home"></i> <span class="align-middle">Instituições</span>
             </a>
@@ -163,8 +164,8 @@
 			<main class="content">
 				
 				<div class="container-fluid p-0">
-					<div id="addTownForm" class="row mb-2 mb-xl-2 col-3 addForm  mx-sm-auto d-none ">
-						<div id="add-town-hall" class="card custom-form">
+					<div id="addInstituitionForm"class="row mb-2 mb-xl-2 col-3  mx-sm-auto addForm d-none ">
+						<div id="add-instituition" class="card custom-form">
 							<div class="card-body ">
 								<div class="col-6 mx-sm-auto">
 									<h3 ><strong class="blue-heading">Adicionar</strong> </h3>
@@ -181,12 +182,15 @@
 								</input>
 								<input type="password" class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Confirmar password">
 								</input>
+								<select class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Confirmar password" value="Câmara Municipal">
+									<option value="Câmara Municipal"> Câmara Municipal</option>
+								</select>
 								<input type="button" class="new-activity-btn my-2  mx-sm-auto w-50 "value="Adicionar"> </input>
 								</form>
 
 							</div>
 							<div id="close-Form">
-							<i class="align-middle ms-auto fixed-top-right" data-feather="x-circle"></i>
+							<i  class="align-middle ms-auto fixed-top-right" data-feather="x-circle"></i>
 						</div>
 						</div>
 						
@@ -195,15 +199,15 @@
 						<div id="layoutSidenav_content" class="card">
 							<div class="card-body">
 								<div class="table-responsive table-hover">
-									<h1 id="listoc-title" class="blue-heading">Câmaras Municipais</h1>
+									<h1 id=listoc-title class="blue-heading">Instituições</h1>
 									<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-										<table class="table table-bordered supTable" id="Table-town-hall" width="100%" cellspacing="0">
+										<table class="table table-bordered supTable" id="Table-instituition" width="100%" cellspacing="0">
 											<thead>
 												<tr>
 													<th>Email</th>
 													<th>Nome</th>
 													<th>Morada</th>
-													
+													<th>Câmara Municipal</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -211,7 +215,7 @@
 										</table>
 
 								<div class="row">
-									<input id="cam-add" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="reset" value="Adicionar"></input>
+									<input id="instituition-add" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="reset" value="Adicionar"></input>
 										<div class="col-sm-3 navbar-align ">
 											
 											<input id="cen-delete" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="reset" value="Eliminar"></input>
@@ -264,7 +268,7 @@
                     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
                     <script src="../vendor/bootstrap/js1/datatables-demo.js"></script>
 					<script src="../js/app.js"></script>
-	<script src="../js/adminCamara.js"></script>
+	<script src="../js/adminInstituicao.js"></script>
 
 </body>
 
