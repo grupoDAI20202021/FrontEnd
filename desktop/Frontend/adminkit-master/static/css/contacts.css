@@ -17,7 +17,7 @@
    justify-content: space-between;
 }
 .logo{
-    width: 180px;
+    width: 15%;
     cursor: pointer;
 }
 .navbar ul li{
@@ -59,18 +59,26 @@
     flex-direction: row;
     display: flex;
     border-radius:60px;
-    box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+        0 10px 10px rgba(0,0,0,0.22);
     width: 50%;
     height: 60%;
     margin: auto;
     overflow: hidden;
 }
 .imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 45%;
     height: 100%;
     background-color:#b8b8b8;
 }
 .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 55%;
     height:100%;
     background-color: #EFEFEF;
@@ -106,53 +114,114 @@
   }
 
 .logo2 {
-  display: block;
+  position: absolute;
   margin-left: auto;
   margin-right: auto;
-  width: 55%;
-  padding-top: 52%;
-  opacity:95%;
+  width: 25%;
 }
 .circle {
-  position:absolute;  
   display:block;
-  width: 35%;
-  padding-top: 20%;
-  left: 35px;
-  bottom: 105px;
+  width: 60%;
+  margin: auto;
 }
 .callus {
   color: #1982C4;
-  position: absolute;
   display: block;
-  left: 450px;
-  top: 170px;
 
 }
 .email {
   color: #707070;
-  position: absolute;
   display: block;
-  left: 448px;
-  top: 210px;
+ 
 
+}
+.content div{
+  display: flex;
+  flex-direction: row;
 }
 .facebook {
   display: block;
-  position: absolute;
-  top:235px;
-  left:465px;
+  
 }
 .insta {
   display: block;
-  position: absolute;
-  top: 235px;
-  left: 525px;
+ 
+
 }
 .linkedin {
   display: block;
-  position: absolute;
-  top: 235px;
-  left: 585px;
+
 }  
- 
+.drawer{
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .card{
+    flex-direction: column;
+  }
+  .imagem{
+    width: 100%;
+    height: 50%;
+  }
+  .content{
+    width: 100%;
+    height: 50%;
+  }
+  .logo2{
+    width: 50%;
+  }
+  .logo{
+    width: 30%;
+  }
+  .navbarList{
+    display: none;
+  }
+  .drawer{
+    display:inherit;
+    color: red;
+    height: 100px;
+    width:100px;
+  }
+}
+
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
