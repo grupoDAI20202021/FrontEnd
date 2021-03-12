@@ -9,9 +9,11 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 	<title>City4Kids website</title>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/about.css">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script src="../js/about.js"></script>
 </head>
 <body>
 	<div class="banner">
@@ -19,8 +21,8 @@
 			<img src="..\img\avatars\logo.jpg" class="logo">
 			<ul>
 				<li><a href="../html/index.html">Página Inicial</a></li>
-				<li><a href="../html/contacts.html">Contactos</a></li>
 				<li><a href="../html/about.html">Sobre</a></li>
+				<li><a href="../html/contacts.html">Contactos</a></li>
 				<li><a href="../html/login.html">Iniciar Sessão</a></li>
 			</ul>
 		</div>
@@ -31,9 +33,14 @@
 	
 				</div>
 			<div class="content">
-				<h1 class="objectivs">Objetivos</h1>
-				<h1 class="team">A nossa equipa</h1>
+				<div class="objectivs">
+				<h1>Objetivos</h1>
 				<p class="text">A City4Kids tem como objetivo garantir o envolvimento das crianças no ordenamento do território, permitindo não só incluir o contributo das mesmas para melhoria dos espaços de uma cidade, mas também para tornar as cidades mais Child Friendly.</p>
+				</div>
+				<div class="team" style="top:77%">
+				<div class="arrow" onclick="toggleTeam()"><img class="img2" src="../img/icons/iconplus.jpg"/></div>
+				<h1>A nossa equipa</h1>
+				<ul>
 				<img src="..\img\avatars\photo.png" class="photo">
 				<img src="..\img\avatars\photo1.png" class="photo1">
 				<img src="..\img\avatars\photo2.png" class="photo2">
@@ -46,6 +53,9 @@
 				<img src="..\img\avatars\photo9.png" class="photo9">
 				<img src="..\img\avatars\photo10.png" class="photo10">
 				<img src="..\img\avatars\photo11.png" class="photo11">
+				</ul>
+				</div>
+				
 			</div>
 		</div>
 		

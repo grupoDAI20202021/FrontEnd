@@ -60,7 +60,8 @@
     flex-direction: row;
     display: flex;
     border-radius:60px;
-    box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+        0 10px 10px rgba(0,0,0,0.22);
     width: 50%;
     height: 60%;
     margin: auto;
@@ -75,6 +76,10 @@
     width: 55%;
     height:100%;
     background-color: #EFEFEF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
  .card-in-top {
 	-webkit-animation: slide-in-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both ;
@@ -123,122 +128,56 @@
   }
   .objectivs{
     color: #1982C4;
-    position: absolute;
-    display: block;
-    left: 480px;
-    top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80%;
+    text-align: center;
     font-family: sans-serif;
   }
   .text{
-      position: absolute;
-      text-align:justify;
-      font-size:14px;
-      top: 100px;
+      font-size:18px;
       margin-left: 20px ;
       margin-right: 20px;
       font-family: sans-serif;
+      margin-top: 25px;
+      color: #808080;
+  }
+  h1 {
+      font-size: 28px;
   }
   .team{
     color: #1982C4;
-    position: absolute;
-    display: block;
-    left: 440px;
-    top: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
     font-family: sans-serif;
+    position: absolute;
+    z-index: 2;
+    background-color: #EFEFEF;
+    transition: all ease-in-out 1s;
 
  }
-.photo{
-    display: block;
-    position:absolute;
-    left:390px;
-    width:65px;
-    top:232px;
+
+.content ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.photo2{
-    display: block;
-    position:absolute;
-    left:480px;
-    width:65px;
-    top:232px;
-   
+.content ul>img{
+    max-width: 17%;
+    margin: 15px 10px;
+    flex: 1;
 }
-.photo3{
-    display: block;
-    position:absolute;
-    left:570px;
-    width:65px;
-    top:232px;
-   
+.img2 {
+    width: 48px;
+    height: 48px;
 }
-.photo4{
-    display: block;
-    position:absolute;
-    left:660px;
-    top:232px;
-    width:65px;
-   
-}
-.photo5{
-    display: block;
-    position:absolute;
-    top:310px;
-    width:65px;
-    left:390px;
-   
-}
-.photo6{
-    display: block;
-    position:absolute;
-    top:310px;
-    left: 480px;
-    width:65px;
-  
-}
-.photo7{
-    display: block;
-    position:absolute;
-    top:310px;
-    width:65px;
-    left:570px;
-  
-}
-.photo8{
-    display: block;
-    position:absolute;
-    top:310px;
-    width:65px;
-    left:660px;
-}
-.photo9{
-    display: block;
-    position:absolute;
-    top:388px;
-    width:65px;
-    left:390px;
-  
-}
-.photo10{
-    display: block;
-    position:absolute;
-    top:388px;
-    width:65px;
-    left:480px;
- 
-}
-.photo11{
-    display: block;
-    position:absolute;
-    top:388px;
-    width:65px;
-    left:570px;
-}
-  
-.photo1{
-    display: block;
-    position: absolute;
-    top:388px;
-    width:65px;
-    left:660px;
+.arrow{
+    margin: auto;
 }
 
  

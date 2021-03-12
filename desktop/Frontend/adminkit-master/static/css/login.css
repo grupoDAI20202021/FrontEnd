@@ -88,18 +88,15 @@
   h1 {
     font-weight: bold;
     margin: 0;
+    display: block;
   }
-  
-  h2 {
-    text-align: center;
-  }
-  
-   p {
+  p {
     font-size: 14px;
     font-weight: 100;
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
+    display: inline-block;
   }
   
   span {
@@ -115,8 +112,8 @@
   
   button {
     border-radius: 20px;
-    border: 1px solid #FF4B2B;
-    background-color: #FF4B2B;
+    border: 1px solid #1982C4;
+    background-color: #1982C4;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
@@ -159,17 +156,16 @@
   }
   
   .container {
-    background-color: #fff;
-    border-radius: 10px;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-        0 10px 10px rgba(0,0,0,0.22);
-    position: relative;
-    overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
     margin-left: auto;
     margin-right: auto;
+    flex-direction: row;
+    display: flex;
+    border-radius:60px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+        0 10px 10px rgba(0,0,0,0.22);
+    width: 850px;
+    height: 60%;
+    overflow: hidden;
     
   }
   
@@ -220,7 +216,7 @@
     position: absolute;
     top: 0;
     left: 50%;
-    width: 50%;
+    width: 60%;
     height: 100%;
     overflow: hidden;
     transition: transform 0.6s ease-in-out;
@@ -232,9 +228,9 @@
   }
   
   .overlay {
-    background: #FF416C;
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background: #1982C4;
+    background: -webkit-linear-gradient(to right, #c1c435, #1982C4);
+    background: linear-gradient(to right, #c1c435, #1982C4);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
