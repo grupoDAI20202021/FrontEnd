@@ -75,4 +75,5 @@ function closeForm(){
               var userRating = this.value;
               alert(userRating);
           }); 
+          
     });
