@@ -7,8 +7,8 @@
 
 (function(window, Calendar) {
     var cal, resizeThrottled;
-    var useCreationPopup = false;
-    var useDetailPopup =false;
+    var useCreationPopup = true;
+    var useDetailPopup =true;
     var datePicker, selectedCalendar;
 
     cal = new Calendar('#calendar', {
