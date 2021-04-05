@@ -1,3 +1,5 @@
+const url="http://127.0.0.1:8080";
+
 let showForm= document.getElementById("cam-add");
 showForm.onclick= openForm;
 
@@ -12,8 +14,25 @@ function closeForm(){
     document.getElementById("addTownForm").className= "row mb-2 mb-xl-2 col-3 addForm mx-sm-auto d-none";
   }
 
+  (function($) {
+    "use strict";
+  
+    setUpCamara();
+  
+    async function setUpCamara() {
+
+    const res = await fetch(url + '/api/townhall', {
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      mode: 'cors',
+      method: 'GET',
+      credentials: 'include'
+  }); 
+    const data = await res.json();
+  
+    let cent = data.map(el => Object.values(el));
 $(document).ready(function() {
-  let cent= new Array("helo","byek");
     $('#Table-town-hall').DataTable({
       autoFill:true,
       "language": {
@@ -62,5 +81,6 @@ $(document).ready(function() {
         linha.classList.toggle("selecionado");
       }
   });
-
+}
+})(jQuery);
   
