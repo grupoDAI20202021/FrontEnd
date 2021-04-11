@@ -8,13 +8,11 @@
 	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-	
 	<link rel="shortcut icon" href="../img/icons/icon-48x48.png" />
-	<link href="../vendor/bootstrap/css1/styles.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 	<title>City4Kids website</title>
     <script src="https://kit.fontawesome.com/f21b1162f6.js" crossorigin="anonymous"></script>
 	<link href="../css/app.css" rel="stylesheet">
@@ -25,33 +23,27 @@
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="AdminDashboard.html">
+				<a class="sidebar-brand" href="InsituicaoDashboard.html">
 					<img src="..\img\avatars\logo2.png" class="logo2small">
+
         </a>
 				<ul class="sidebar-nav">
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="AdminDashboard.html">
+					<li class="sidebar-item active">
+						<a class="sidebar-link" href="InstituicaoDashboard.html">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 					<li class="sidebar-item ">
-						<a class="sidebar-link" href="AdminCalendar.html">
+						<a class="sidebar-link" href="InstituicaoCalendar.html">
               <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Calendario</span>
             </a>
 					</li>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="AdminCamara.html">
-              <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Câmaras Municipais</span>
-            </a>
-					</li>
-
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="AdminInstituicao.html">
-              <i class="align-middle" data-feather="home"></i> <span class="align-middle">Instituições</span>
+						<a class="sidebar-link" href="InstituicaoAtividade.html">
+              <i class="align-middle" data-feather="award"></i> <span class="align-middle">Avaliar Atividades</span>
             </a>
 					</li>
-
 					
 				</ul>
 			</div>
@@ -148,7 +140,7 @@
               <span class="text-dark">Charles Hall</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="profile_admin.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="pages-settings.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
@@ -160,111 +152,7 @@
 					</ul>
 				</div>
 			</nav>
-			<main class="content">
-				
-				<div class="container-fluid p-0">
-					<div id="addTownForm" class="row mb-2 mb-xl-2 col-3 addForm  mx-sm-auto d-none ">
-						<div id="add-town-hall" class="card custom-form">
-							<div class="card-body ">
-								<div class="col-6 mx-sm-auto">
-									<h3 ><strong class="blue-heading">Adicionar</strong> </h3>
-									
-								</div>
-								<form class="mx-sm-auto ">
-									<input class=" form-control mx-sm-auto w-100 my-2 custom-input " placeholder="Email">
-								</input>
-									<input class=" form-control mx-sm-auto w-100 my-2 custom-input " placeholder="Nome">
-								</input>
-								<input type="text" class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Morada">
-								</input>
-								<input type ="password"class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Password">
-								</input>
-								<input type="password" class="form-control mx-sm-auto w-100 my-2 custom-input" placeholder="Confirmar password">
-								</input>
-								<input type="button" class="new-activity-btn my-2  mx-sm-auto w-50 "value="Adicionar"> </input>
-								</form>
-
-							</div>
-							<div id="close-Form">
-							<i class="align-middle ms-auto fixed-top-right" data-feather="x-circle"></i>
-						</div>
-						</div>
-						
-					</div>
-					<div class="row mb-2 mb-xl-2">
-						<div id="layoutSidenav_content" class="card">
-							<div class="card-body">
-								<div class="table-responsive table-hover">
-									<h1 id="listoc-title" class="blue-heading">Câmaras Municipais</h1>
-									<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-										<table class="table table-bordered supTable" id="Table-town-hall" width="100%" cellspacing="0">
-											<thead>
-												<tr>
-													<th>Email</th>
-													<th>Nome</th>
-													<th>Morada</th>
-													
-												</tr>
-											</thead>
-											<tbody>
-											</tbody>
-										</table>
-
-								<div class="row">
-									<input id="cam-add" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="reset" value="Adicionar"></input>
-										<div class="col-sm-3 navbar-align ">
-											
-											<input id="cen-delete" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="reset" value="Eliminar"></input>
-											<input id="view-data-cen" class="btn btn-primary text-uppercase js-scroll-trigger w-auto" type="submit" value="Visualizar Dados" href=""></input>
-										</div>
-				
-									</div>
-								</div>
-						</div>
-					</div>
-			</main>
-
-			<footer class="footer">
-				<div class="container-fluid">
-					<div class="row text-muted">
-						<div class="col-6 text-start">
-							<p class="mb-0">
-								<a href="http://prochildcolab.pt/" class="text-muted"><strong>ProChild CoLAB</strong></a> 
-							</p>
-						</div>
-						<div class="col-6 text-end">
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://prochildcolab.pt/missao-e-objetivos/">Missão</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://prochildcolab.pt/contacto/#">Contacto</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://prochildcolab.pt/equipa/">Equipa</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="http://prochildcolab.pt/projetos/">Projetos</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</div>
-
-	
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-                   <!-- <script src="js/list-centralist.js"></script>-->
-                    <script src="../js/scripts.js"></script>
-                    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-                    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-                    <script src="../vendor/bootstrap/js1/datatables-demo.js"></script>
-					<script src="../js/app.js"></script>
-	<script src="../js/adminCamara.js"></script>
+			
 
 </body>
 
