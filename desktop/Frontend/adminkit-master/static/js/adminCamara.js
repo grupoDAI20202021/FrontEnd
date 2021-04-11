@@ -21,7 +21,7 @@ function closeForm(){
   
     async function setUpCamara() {
 
-    const res = await fetch(url + '/api/townhall', {
+    const res = await fetch(url + '/api/townhalls', {
       headers: {
           'Content-Type': 'application/json'
       },

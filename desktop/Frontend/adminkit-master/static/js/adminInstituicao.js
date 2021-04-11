@@ -1,3 +1,4 @@
+const url="http://127.0.0.1:8080";
 let showForm= document.getElementById("instituition-add");
 showForm.onclick= openForm;
 
@@ -12,8 +13,25 @@ function closeForm(){
     document.getElementById("addInstituitionForm").className= "row mb-2 mb-xl-2 col-3 addForm mx-sm-auto d-none";
   }
 
+  (function($) {
+    "use strict";
+  
+    setUpInstituicao();
+  
+    async function setUpInstituicao() {
+
+    const res = await fetch(url + '/api/institutions', {
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      mode: 'cors',
+      method: 'GET',
+      credentials: 'include'
+  }); 
+    const data = await res.json();
+  
+    let cent = data.map(el => Object.values(el));
 $(document).ready(function() {
-  let cent= new Array("helo","byek");
     $('#Table-instituition').DataTable({
       autoFill:true,
       "language": {
@@ -62,5 +80,5 @@ $(document).ready(function() {
         linha.classList.toggle("selecionado");
       }
   });
-
-  
+    }
+})(jQuery);
