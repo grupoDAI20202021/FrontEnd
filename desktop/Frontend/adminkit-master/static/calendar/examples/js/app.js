@@ -8,7 +8,7 @@
 (function(window, Calendar) {
     var cal, resizeThrottled;
     var useCreationPopup = true;
-    var useDetailPopup = true;
+    var useDetailPopup =true;
     var datePicker, selectedCalendar;
 
     cal = new Calendar('#calendar', {
@@ -17,14 +17,14 @@
         useDetailPopup: useDetailPopup,
         calendars: CalendarList,
         template: {
-            milestone: function(model) {
-                return '<span class="calendar-font-icon ic-milestone-b"></span> <span style="background-color: ' + model.bgColor + '">' + model.title + '</span>';
+            milestone: function(schedule) {
+                return '<span style="color:red;"><i class="fa fa-flag"></i> ' + schedule.title + '</span>';
             },
-            allday: function(schedule) {
-                return getTimeTemplate(schedule, true);
+          milestoneTitle: function() {
+                return 'Milestone';
             },
-            time: function(schedule) {
-                return getTimeTemplate(schedule, false);
+            task: function(schedule) {
+                return '&nbsp;&nbsp;#' + schedule.title;
             }
         }
     });
@@ -208,7 +208,6 @@
         var start = datePicker.getStartDate();
         var end = datePicker.getEndDate();
         var calendar = selectedCalendar ? selectedCalendar : CalendarList[0];
-
         if (!title) {
             return;
         }
@@ -239,6 +238,7 @@
         var target = $(e.target).closest('a[role="menuitem"]')[0];
         var calendarId = getDataAction(target);
         changeNewScheduleCalendar(calendarId);
+        
     }
 
     function changeNewScheduleCalendar(calendarId) {

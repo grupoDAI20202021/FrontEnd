@@ -19,12 +19,11 @@
     <script src="https://kit.fontawesome.com/f21b1162f6.js" crossorigin="anonymous"></script>
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  crossorigin="anonymous">
 </head>
 
 <body>
 	<div class="wrapper">
-		
-			
 			<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="InsituicaoDashboard.html">
@@ -42,14 +41,11 @@
               <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Calendario</span>
             </a>
 					</li>
-
 					<li class="sidebar-item active">
 						<a class="sidebar-link" href="InstituicaoAtividade.html">
               <i class="align-middle" data-feather="award"></i> <span class="align-middle">Avaliar Atividades</span>
             </a>
 					</li>
-
-					
 				</ul>
 			</div>
 		</nav>
@@ -59,7 +55,6 @@
 				<a class="sidebar-toggle d-flex">
           <i class="hamburger align-self-center"></i>
         </a>
-
 				<form class="d-none d-sm-inline-block">
 					<div class="input-group input-group-navbar">
 						<input type="text" class="form-control" placeholder="Search…" aria-label="Search">
@@ -140,7 +135,6 @@
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
               </a>
-
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
               <span class="text-dark">Charles Hall</span>
               </a>
@@ -158,17 +152,110 @@
 				</div>
 			</nav>
 			<main class="content">
-				
 				<div class="container-fluid p-0">
 					<div id="eval-activity-form" class="row mb-2 mb-xl-2 col-9 addForm  mx-sm-auto d-none ">
 						<div id="add-town-hall" class="card custom-form">
-							<div class="card-body ">
-								
+							<div class="card-body ">	
 							<div id="close-Form">
 							<i class="align-middle ms-auto fixed-top-right" data-feather="x-circle"></i>
 						</div>
+						<div class="col-xl-12 col-xxl-12 d-flex">
+							<div class="w-100">
+								<div class="row">
+									<div class="col-sm-6 max-h-425 overflow-auto">
+										<div class="card ">
+											<div class="card-body">
+													<h3 class="blue-heading text-xxl-start d-flex"><strong >Presenças</strong> </h3>
+												<table class="table table-hover my-0">
+													<thead>
+														<tr>
+															<th>Nome</th>
+															<th class="d-none d-xl-table-cell">Idade</th>
+															<th class="d-none d-xl-table-cell">Presença</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Project Apollo</td>
+															<td class="d-none d-xl-table-cell">01/01/2021</td>
+															<td class="d-none d-xl-table-cell">31/06/2021</td>
+															
+														</tr>
+														<tr>
+															<td>Project Fireball</td>
+															<td class="d-none d-xl-table-cell">01/01/2021</td>
+															<td class="d-none d-xl-table-cell">31/06/2021</td>
+															
+														</tr>
+														<tr>
+															<td>Project Hades</td>
+															<td class="d-none d-xl-table-cell">01/01/2021</td>
+															<td><input type="checkbox" class=""> </input> </td>
+															
+														</tr>
+														<tr>
+															<td>Project Hades</td>
+															<td class="d-none d-xl-table-cell">01/01/2021</td>
+															<td><input type="checkbox" class=""> </input> </td>
+															
+														</tr>
+														<tr>
+															<td>Project Hades</td>
+															<td class="d-none d-xl-table-cell">01/01/2021</td>
+															<td><input type="checkbox" class=""> </input> </td>
+															
+														</tr>
+														<tr>
+															<td>Project Hades</td>
+															<td class="d-none d-xl-table-cell">01/01/2021</td>
+															<td><input type="checkbox" class=""> </input> </td>
+															
+														</tr>
+														<tr>
+															<td>Project Hades</td>
+															<td class="d-none d-xl-table-cell">01/01/2021</td>
+															<td><input type="checkbox" class=""> </input> </td>
+															
+														</tr>
+														<tr>
+															<td>Project Hades</td>
+															<td class="d-none d-xl-table-cell">01/01/2021</td>
+															<td><input type="checkbox" class=""> </input> </td>
+															
+														</tr>
+														<tr>
+															<td>Project Hades</td>
+															<td class="d-none d-xl-table-cell">01/01/2021</td>
+															<td><input type="checkbox" class=""> </input> </td>
+															
+														</tr>	
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6 max-h-425 overflow-auto">
+										<div class="card">
+											<div class="card-body">
+												
+													<h3 class="blue-heading text-xxl-start d-flex w-100"><strong> Como correu a atividade?</strong> </h3>
+													<form class="rating d-flex">
+														<input type="radio" name="rating" id="str5" value="5" ><label for="str5"></label></input>
+														<input type="radio" name="rating" id="str4" value="4"><label for="str4"></label></input>
+														<input type="radio" name="rating" id="str3" value="3"><label for="str3"></label></input>
+														<input type="radio" name="rating" id="str2" value="2"><label for="str2"></label></input>
+														<input type="radio" name="rating" id="str1" value="1"><label for="str1"></label></input>
+														
+													</form >
+													<input type="textarea" class="form-control"> </input>
+													<input id="" class=" d-block navbar-align btn btn-primary text-uppercase js-scroll-trigger w-auto mt-3" type="submit" value="Enviar" href=""></input>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						
+						</div>
 					</div>
 					</div>
 					<div class="row mb-2 mb-xl-2">
@@ -177,14 +264,13 @@
 								<div class="table-responsive table-hover">
 									<h1 id="listoc-title" class="blue-heading">Atividades por avaliar</h1>
 									<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-										<table class="table table-bordered supTable" id="Table-town-hall" width="100%" cellspacing="0">
+										<table class="table table-bordered supTable" id="Table-activity" width="100%" cellspacing="0">
 											<thead>
 												<tr>
 													<th>Descrição</th>
-													<th>Morada</th>
+													<th>Localização</th>
 													<th>Data inicial</th>
                                                     <th>Data final</th>
-													
 												</tr>
 											</thead>
 											<tbody>
@@ -226,7 +312,7 @@
 		</div>
 	</div>
 
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
                     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

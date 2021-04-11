@@ -35,6 +35,29 @@
 :before {
 	box-sizing: border-box
 }
+/* Turn on custom 8px wide scrollbar */
+::-webkit-scrollbar {
+	width: 8px; /* 1px wider than Lion. */
+	/* This is more usable for users trying to click it. */
+	background-color: rgba(0,0,0,0);
+  }
+  /* hover effect for both scrollbar area, and scrollbar 'thumb' */
+  ::-webkit-scrollbar:hover {
+	background-color: rgba(0, 0, 0, 0.09);
+  }
+  
+  /* The scrollbar 'thumb' ...that marque oval shape in a scrollbar */
+  ::-webkit-scrollbar-thumb:vertical {
+	/* This is the EXACT color of Mac OS scrollbars. 
+	   Yes, I pulled out digital color meter */
+	background: rgba(0,0,0,0.5);
+  }
+  ::-webkit-scrollbar-thumb:vertical:active {
+	background: rgba(0,0,0,0.61); /* Some darker color when you click it */
+
+  }
+  
+  
 
 @media (prefers-reduced-motion:no-preference) {
 	:root {
@@ -13713,9 +13736,7 @@ span.flatpickr-weekday {
 	background-color: #EFEFEF;
 }
 .fixed-top-right{
-	position: fixed;
-    top: 17%;
-    left: 58%;
+    display:block;
 }
 /*  					adminDashboard */
 #dashboardActivity{
@@ -13829,4 +13850,49 @@ span.flatpickr-weekday {
   .add-sponsor-img-div{
 	  background-color: white;
   }
- 
+/*                               InstituicaoAtividade    */
+  .rating {
+    position: relative;
+}
+
+
+.rating label {
+    display:block;
+    width:50px;
+   cursor: pointer;
+}
+.rating label:before {
+	content:"\f005";
+	font-family: fontAwesome;
+	position: relative;
+	display: block;
+	font-size: 50px;
+	color:white;
+	text-shadow: 0 0 3px #000;
+}
+.rating label:after {
+	content:"\f005";
+	font-family: fontAwesome;
+	position: absolute;
+	display: block;
+	font-size: 50px;
+	color:yellow;
+	border-color: yellow;
+	top:0;
+	opacity:0;
+	transition: .5s;
+	text-shadow: 0 2px 5px rgba(o,o,o,.5);
+}
+
+.rating label:hover:after, 
+.rating label:hover ~label:after,
+.rating input:checked ~ label:after {
+	opacity: 1;
+}
+
+.rating input {
+	display:none;
+}
+.max-h-425{
+	max-height: 425px;
+}
