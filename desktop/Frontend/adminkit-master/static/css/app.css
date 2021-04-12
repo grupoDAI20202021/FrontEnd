@@ -13896,3 +13896,7 @@ span.flatpickr-weekday {
 .max-h-425{
 	max-height: 425px;
 }
+
+tr.selecionado td {
+    background-color:#c5c8cb33 ;
+}

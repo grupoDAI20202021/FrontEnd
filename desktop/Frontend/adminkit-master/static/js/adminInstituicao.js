@@ -79,6 +79,66 @@ $(document).ready(function() {
         }
         linha.classList.toggle("selecionado");
       }
+      let btnEliminar = document.getElementById("cen-delete");
+
+      btnEliminar.addEventListener("click", function() {
+
+        let selecionados = tabela.getElementsByClassName("selecionado");
+        //Verificar se está selecionado
+        if (selecionados.length < 1) {
+          swal({
+            title: "Selecione uma linha!",
+            icon: "info",
+          });
+          return false;
+        }
+
+        for (let i = 0; i < selecionados.length; i++) {
+          let selecionado = selecionados[i];
+          selecionado = selecionado.getElementsByTagName("td");
+          for (const ln of selecionados) {
+            swal({
+                title: "Pretende eliminar a instituicao " + selecionado[1].innerHTML + " ?",
+                icon: "warning",  
+                buttons: ["Sim", "Não"],
+                //dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {}
+                else {
+                  $(document).ready(function() {
+                    setUpDataTable1();
+                  });
+
+                  async function setUpDataTable1() {
+                    let a = selecionado[0].innerHTML;
+                    for (const value of data) {
+                      if(value.email === a){
+                        await fetch(url + '/api/institutions/' + value.idInstitution, { method: "DELETE" })
+                        .then(function(response) {
+                          if (!response.ok) {
+                            console.log(response.status); //=> number 100â€“599
+                            console.log(response.statusText); //=> String
+                            console.log(response.headers); //=> Headers
+                            console.log(response.url); //=> String
+                           
+                          }
+                          else {
+                            swal({
+                              title: "A câmara " + value.name + " foi removido com sucesso!",
+                              icon: "success",
+                            });
+                                  ln.remove();
+                                }
+                        });
+                    }
+                      }
+                    }
+                }
+              });
+          }
+        }
+      });
   });
     }
 })(jQuery);
