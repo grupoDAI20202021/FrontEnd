@@ -43,20 +43,20 @@ window.onload = async function () {
           })
           .then(async function (result) {
               if (result) {
-                  console.log(result);
                   localStorage.setItem("userLogado", result.userId);
                   localStorage.setItem("RoleLogado", result.role);
-
+                console.log(result.role);
                   Swal.fire("Sucesso!",
                       "Autenticado com sucesso!",
                       "success")
                       .then(() => {
-                        if (result.role !== "ROLE_INSTITUTION") {
-                          window.location.replace("../html/InstituicaoDashboard.html");
-                      } if (result.role !== "ROLE_ADMINISTRATOR") {
+                        if (result.role == "ROLE_INSTITUTION") {
+                          setUpTownHall();  
+
+                      } if (result.role == "ROLE_ADMINISTRATOR") {
                           window.location.replace("../html/AdminDashboard.html");
                       }
-                      if (result.role !== "ROLE_TOWNHALL") {
+                      if (result.role == "ROLE_TOWNHALL") {
                         window.location.replace("../html/CamaraDashboard.html");
                       }
                   });
@@ -73,10 +73,8 @@ window.onload = async function () {
           });
 
   };
-
-
-
-};
+   
+}
 
 function register() {
   const name = document.getElementById("name_register").value;
@@ -112,3 +110,16 @@ function getCookie(cname) {
   }
   return "";
 }
+
+function setUpTownHall() {
+  fetch('http://127.0.0.1:8080/api/institutions/'+ localStorage.getItem("userLogado")+'/townhall')
+  .then(res => res.json())
+  .then((out) => {
+  localStorage.setItem("idTownHall",out);
+  window.location.replace("../html/InstituicaoDashboard.html");
+});
+}
+
+
+
+    
