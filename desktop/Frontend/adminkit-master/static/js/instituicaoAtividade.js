@@ -1,20 +1,107 @@
 const url="http://127.0.0.1:8080";
-let showForm= document.getElementById("eval-activity");
-showForm.onclick= openForm;
+let input;
+let obj = [];
+let selecionados;
 
-let hideForm= document.getElementById("close-Form");
-hideForm.addEventListener("click", closeForm);
+  (function($) {
+    "use strict";
 
-function openForm(){
-  document.getElementById("eval-activity-form").className= "mb-2 mb-xl-2 col-9  addForm mx-sm-auto";
-   }
+    let hideForm= document.getElementById("close-Form");
+    hideForm.addEventListener("click", closeForm);
+
+    let SubmitForm= document.getElementById("BtnSubmit");
+    SubmitForm.addEventListener("click", submitForm);
   
 function closeForm(){
     document.getElementById("eval-activity-form").className= "mb-2 mb-xl-2 col-9  addForm mx-sm-auto d-none";
   }
+  function submitForm(){
+    let presence = {};
+    if(input==undefined){
+      swal({
+        title: "Selecione uma avaliação!",
+        icon: "info",
+      });
+    }else {
+      presence.evaluation= input;
+      fetch(url + '/api/activities/' + localStorage.getItem("idActivity") + '/evaluation/', {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'PUT',
+        body: JSON.stringify(presence)
+    }).then(function(response) {
+        if (!response.ok) {
+            console.log(response.status); //=> number 100–599
+            console.log(response.statusText); //=> String
+            console.log(response.headers); //=> Headers
+            console.log(response.url); //=> String
+        }
+        else {
+        }
+    }).then(function(result) {
+        console.log(result);
+    }).catch(function(err) {
+        console.error(err);
+    });
 
-  (function($) {
-    "use strict";
+
+   
+   let datatable = document.getElementsByClassName("fullRow");
+    for (let c = 0; c < datatable.length; c++) {
+       if(datatable[c].getElementsByTagName("input")[0].checked ){
+         presence.int=1;
+
+
+        fetch(url + '/api/activities/' + localStorage.getItem("idActivity") + '/children/' + datatable[c].id + '/presence', {
+                        headers: { 'Content-Type': 'application/json' },
+                        method: 'PUT',
+                        body: JSON.stringify(presence)
+                    }).then(function(response) {
+                        if (!response.ok) {
+                            console.log(response.status); //=> number 100–599
+                            console.log(response.statusText); //=> String
+                            console.log(response.headers); //=> Headers
+                            console.log(response.url); //=> String
+                        }
+                        else {
+                        }
+                    }).then(function(result) {
+                        console.log(result);
+                    }).catch(function(err) {
+                        console.error(err);
+                    });
+       } else {
+        presence.int=0;
+        fetch(url + '/api/activities/' + localStorage.getItem("idActivity") + '/children/' + datatable[c].id + '/presence', {
+                        headers: { 'Content-Type': 'application/json' },
+                        method: 'PUT',
+                        body: JSON.stringify(presence)
+                    }).then(function(response) {
+                        if (!response.ok) {
+                            console.log(response.status); //=> number 100–599
+                            console.log(response.statusText); //=> String
+                            console.log(response.headers); //=> Headers
+                            console.log(response.url); //=> String
+                        }
+                        else {
+                        }
+                    }).then(function(result) {
+                        console.log(result);
+                    }).catch(function(err) {
+                        console.error(err);
+                    });
+       }
+      }
+      swal({
+        title: "Atividade avaliada com sucesso!",
+        icon: "success",
+      });
+      for (const ln of selecionados) {
+        ln.remove();
+      }
+      closeForm();
+    }
+  }
+    
   
     setUpInstituicao();
   
@@ -58,6 +145,20 @@ function closeForm(){
            "searchable": false
          }]*/
       });
+
+      // Check Radio-box
+    $(".rating input:radio").attr("checked", false);
+      
+    $('.rating input').click(function () {
+        $(".rating span").removeClass('checked');
+        $(this).parent().addClass('checked');
+    });
+    $('input:radio').change(
+      function(){
+        input= this.value;
+        //alert(userRating);
+    }); 
+
       let tabela = document.getElementById("Table-activity");
         let linhas = tabela.getElementsByTagName("tr");
   
@@ -81,25 +182,14 @@ function closeForm(){
           linha.classList.toggle("selecionado");
         }
        
-          // Check Radio-box
-          $(".rating input:radio").attr("checked", false);
       
-          $('.rating input').click(function () {
-              $(".rating span").removeClass('checked');
-              $(this).parent().addClass('checked');
-          });
-      
-          $('input:radio').change(
-            function(){
-              var userRating = this.value;
-              alert(userRating);
-          }); 
           
-          let btnVizualizar = document.getElementById("cen-delete");
+          
+          let btnVizualizar = document.getElementById("eval-activity");
 
-      btnVizaulizar.addEventListener("click", function() {
+      btnVizualizar.addEventListener("click", function() {
 
-        let selecionados = tabela.getElementsByClassName("selecionado");
+         selecionados = tabela.getElementsByClassName("selecionado");
         //Verificar se está selecionado
         if (selecionados.length < 1) {
           swal({
@@ -114,7 +204,7 @@ function closeForm(){
           selecionado = selecionado.getElementsByTagName("td");
           for (const ln of selecionados) {
             swal({
-                title: "Pretende avaliar a camara " + selecionado[0].innerHTML + " ?",
+                title: "Pretende avaliar a atividade " + selecionado[0].innerHTML + " ?",
                 icon: "warning",  
                 buttons: ["Sim", "Não"],
                 //dangerMode: true,
@@ -123,30 +213,24 @@ function closeForm(){
                 if (willDelete) {}
                 else {
                   $(document).ready(function() {
-                    setUpDataTable1();
+                    showForm();
                   });
 
-                  async function setUpDataTable1() {
+                  async function showForm() {
                     let a = selecionado[0].innerHTML;
+                    let b = selecionado[1].innerHTML;
+                    let c = selecionado[2].innerHTML
                     for (const value of data) {
-                      if(value.email === a){
-                        await fetch(url + '/api/townhalls/' + value.idTownHall, { method: "DELETE" })
-                        .then(function(response) {
-                          if (!response.ok) {
-                            console.log(response.status); //=> number 100â€“599
-                            console.log(response.statusText); //=> String
-                            console.log(response.headers); //=> Headers
-                            console.log(response.url); //=> String
-                           
-                          }
-                          else {
-                            swal({
-                              title: "A câmara " + value.name + " foi removido com sucesso!",
-                              icon: "success",
-                            });
-                                  ln.remove();
-                                }
-                        });
+                      if(value.title == a && value.address ==b && value.init_data == c){
+                        localStorage.setItem("idActivity",value.idActivity);
+                        const res = await fetch(url + '/api/activities/'+ value.idActivity+'/children')
+                        const dataTable = await res.json();
+                        $('#tablePresences tbody').empty();
+                        for(let i =0; i<dataTable.length;i++){
+                          obj.push({ "idChild": dataTable[i].idChild });
+                          $('#tablePresences tbody').append('<tr id="'+dataTable[i].idChild+'" class="fullRow"><td>' + dataTable[i].name+'</td><td class="d-none d-xl-table-cell">'+ dataTable[i].age+'</td><td><input type="checkbox" class=""> </input> </td></tr>')
+                        }
+                        document.getElementById("eval-activity-form").className= "mb-2 mb-xl-2 col-9  addForm mx-sm-auto";
                     }
                       }
                     }
@@ -156,5 +240,6 @@ function closeForm(){
         }
       });
     });
+    
 }
 })(jQuery);
