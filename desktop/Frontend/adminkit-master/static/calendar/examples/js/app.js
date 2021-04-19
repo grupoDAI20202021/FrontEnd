@@ -439,8 +439,10 @@
     setEventListener();
 })(window, tui.Calendar);
 
+
 // set calendars
 (function() {
+
     var calendarList = document.getElementById('calendarList');
     var html = [];
     CalendarList.forEach(function(calendar) {                  // colocar as atividade no menu de lado
