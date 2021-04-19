@@ -200,3 +200,12 @@
   text-align: center;
   color: #000;
 }
+
+.tui-full-calendar-weekday-schedule-title{
+  color:white;
+ /* margin-left: 1px;*/
+}
+
+.tui-full-calendar-month-more-schedule{
+  color:white !important;
+}

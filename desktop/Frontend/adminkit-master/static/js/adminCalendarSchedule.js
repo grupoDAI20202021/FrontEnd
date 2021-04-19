@@ -331,7 +331,9 @@ if (chance.bool({ likelihood: 20 })) { // deve ser para cagar
     schedule.comingDuration = travelTime;
 }
 console.log(schedule)
+getTimeTemplate(schedule,true);
 ScheduleList.push(schedule); // por na lista de aitividades
+getTimeTemplate(schedule,true);
 
 }
 
@@ -354,6 +356,37 @@ ScheduleList.push(schedule); // por na lista de aitividades
     
  }
 
+
+  /**
+     * Get time template for time and all-day
+     * @param {Schedule} schedule - schedule
+     * @param {boolean} isAllDay - isAllDay or hasMultiDates
+     * @returns {string}
+     */
+   function getTimeTemplate(schedule, isAllDay) {
+    var html = [];
+    var start = moment(schedule.start.toUTCString());
+    if (!isAllDay) {
+        html.push('<strong>' + start.format('HH:mm') + '</strong> ');
+    }
+    if (schedule.isPrivate) {
+        html.push('<span class="calendar-font-icon ic-lock-b"></span>');
+        html.push(' Private');
+    } else {
+        if (schedule.isReadOnly) {
+            html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
+        } else if (schedule.recurrenceRule) {
+            html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
+        } else if (schedule.attendees.length) {
+            html.push('<span class="calendar-font-icon ic-user-b"></span>');
+        } else if (schedule.location) {
+            html.push('<span class="calendar-font-icon ic-location-b"></span>');
+        }
+        html.push(' ' + schedule.title);
+    }
+
+    return html.join('');
+}
 
 
 

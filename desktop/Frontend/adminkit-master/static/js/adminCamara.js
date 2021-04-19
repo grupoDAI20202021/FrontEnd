@@ -35,6 +35,7 @@ function closeForm(){
     let cent = data.map(el => Object.values(el));
     console.log(cent)
 $(document).ready(function() {
+  document.getElementById("userEmail").innerHTML= localStorage.getItem("EmailLogado");
     $('#Table-town-hall').DataTable({
       autoFill:true,
       "language": {

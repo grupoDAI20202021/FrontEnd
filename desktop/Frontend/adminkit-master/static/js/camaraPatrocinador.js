@@ -19,7 +19,7 @@ function closeForm(){
 
 
   $(document).ready(function() {
-
+    document.getElementById("userEmail").innerHTML= localStorage.getItem("EmailLogado");
    fillTable();
 
   });

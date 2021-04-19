@@ -1,5 +1,6 @@
 const url="http://127.0.0.1:8080";
 document.addEventListener("DOMContentLoaded", function() {
+	document.getElementById("userEmail").innerHTML= localStorage.getItem("EmailLogado");
 	fillTable();
   
 			

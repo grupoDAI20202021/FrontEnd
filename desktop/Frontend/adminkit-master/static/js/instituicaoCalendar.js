@@ -31,7 +31,7 @@ var Calendar = tui.Calendar;
             }
         }
     });
-
+    document.getElementById("userEmail").innerHTML= localStorage.getItem("EmailLogado");
     // event handlers
     cal.on({
         'clickMore': function(e) {

@@ -9,7 +9,7 @@ const url="http://127.0.0.1:8080";
 
 (function(window, Calendar) {
     var cal, resizeThrottled;
-    var useCreationPopup = true;
+    var useCreationPopup = false;
     var useDetailPopup =true;
     var datePicker, selectedCalendar;
 
@@ -27,6 +27,12 @@ const url="http://127.0.0.1:8080";
             },
             task: function(schedule) {
                 return '&nbsp;&nbsp;#' + schedule.title;
+            },
+            allday: function(schedule) {
+                return getTimeTemplate(schedule, true);
+            },
+            time: function(schedule) {
+                return getTimeTemplate(schedule, false);
             }
         }
     });
@@ -66,7 +72,8 @@ const url="http://127.0.0.1:8080";
         'afterRenderSchedule': function(e) {
             var schedule = e.schedule;
              var element = cal.getElement(schedule.id, schedule.calendarId);
-             console.log('afterRenderSchedule', element);
+             getTimeTemplate(schedule,false)
+             console.log('afterRenderSchedule', e.schedule);
         },
         'clickTimezonesCollapseBtn': function(timezonesCollapsed) {
             console.log('timezonesCollapsed', timezonesCollapsed);
@@ -86,7 +93,7 @@ const url="http://127.0.0.1:8080";
             return true;
         }
     });
-
+    document.getElementById("userEmail").innerHTML= localStorage.getItem("EmailLogado");
     /**
      * Get time template for time and all-day
      * @param {Schedule} schedule - schedule
@@ -99,12 +106,13 @@ const url="http://127.0.0.1:8080";
         if (!isAllDay) {
             html.push('<strong>' + start.format('HH:mm') + '</strong> ');
         }
-        if (schedule.isPrivate) {
+        if (schedule.recurrenceRule== "Aprovada"||schedule.recurrenceRule== "Finalizada") {
             html.push('<span class="calendar-font-icon ic-lock-b"></span>');
-            html.push(' Private');
+            html.push(' ' + schedule.start.toDate().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})+" "+schedule.title);
         } else {
             if (schedule.isReadOnly) {
-                html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
+               // html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
+                html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
             } else if (schedule.recurrenceRule) {
                 html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
             } else if (schedule.attendees.length) {
@@ -112,7 +120,7 @@ const url="http://127.0.0.1:8080";
             } else if (schedule.location) {
                 html.push('<span class="calendar-font-icon ic-location-b"></span>');
             }
-            html.push(' ' + schedule.title);
+            html.push(' ' + schedule.start.toDate().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})+" "+schedule.title);
         }
 
         return html.join('');
@@ -407,6 +415,10 @@ const url="http://127.0.0.1:8080";
         cal.clear();
         //generateSchedule(cal.getViewName(), cal.getDateRangeStart(), cal.getDateRangeEnd());
         cal.createSchedules(ScheduleList);
+        for(let i=0; ScheduleList.length;i++){
+            console.log("hello")
+            getTimeTemplate(ScheduleList[i],ScheduleList.isAllDay)
+        }
 
         refreshScheduleVisibility();
     }

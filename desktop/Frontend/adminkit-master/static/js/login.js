@@ -45,6 +45,7 @@ window.onload = async function () {
               if (result) {
                   localStorage.setItem("userLogado", result.userId);
                   localStorage.setItem("RoleLogado", result.role);
+                  localStorage.setItem("EmailLogado", document.getElementById("email_login").value.trim());
                 console.log(result.role);
                   Swal.fire("Sucesso!",
                       "Autenticado com sucesso!",
