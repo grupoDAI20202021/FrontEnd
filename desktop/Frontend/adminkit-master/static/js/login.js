@@ -46,6 +46,7 @@ window.onload = async function () {
                   localStorage.setItem("userLogado", result.userId);
                   localStorage.setItem("RoleLogado", result.role);
                   localStorage.setItem("EmailLogado", document.getElementById("email_login").value.trim());
+                  localStorage.setItem("accessToken", result.accessToken);
                 console.log(result.role);
                   Swal.fire("Sucesso!",
                       "Autenticado com sucesso!",
@@ -56,6 +57,8 @@ window.onload = async function () {
 
                       } if (result.role == "ROLE_ADMINISTRATOR") {
                           window.location.replace("../html/AdminDashboard.html");
+                          console.log(result);
+                          
                       }
                       if (result.role == "ROLE_TOWNHALL") {
                         window.location.replace("../html/CamaraDashboard.html");

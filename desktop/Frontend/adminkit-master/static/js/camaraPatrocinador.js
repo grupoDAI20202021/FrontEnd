@@ -20,6 +20,7 @@ function closeForm(){
 
   $(document).ready(function() {
     document.getElementById("userEmail").innerHTML= localStorage.getItem("EmailLogado");
+    console.log(localStorage.getItem('userLogado'));
    fillTable();
 
   });
@@ -31,7 +32,7 @@ function closeForm(){
     let count =0;
     let screen = document.getElementById("sponsor-container");
             let txt = "";
-    fetch(url + '/api/townhalls/'+localStorage.getItem('idTownHall')+'/sponsors')
+    fetch(url + '/api/townhalls/'+localStorage.getItem('userLogado')+'/sponsors')
         .then(res => res.json())
         .then((out) => {
           refillSponsor();

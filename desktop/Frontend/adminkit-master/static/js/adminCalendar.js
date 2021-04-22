@@ -120,6 +120,7 @@ const url="http://127.0.0.1:8080";
             } else if (schedule.location) {
                 html.push('<span class="calendar-font-icon ic-location-b"></span>');
             }
+           // console.log(schedule.start)
             html.push(' ' + schedule.start.toDate().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})+" "+schedule.title);
         }
 

@@ -279,7 +279,6 @@ function listSchedules(value ){
     schedule.calendarId = String(value.activityType.idActivityType);
     schedule.title = value.title;
     schedule.isReadOnly=true;
-
     startDate=moment(value.init_data);
     endDate = moment(value.end_data);
     diffDate = endDate.diff(startDate, 'days');
