@@ -1,6 +1,3 @@
-
-
-
 let url1="http://127.0.0.1:8080";
 'use strict';
 
@@ -207,11 +204,11 @@ function generateRandomSchedule(/*calendar, renderStart, renderEnd*/) {  // gera
     
    // var schedule = new ScheduleInfo();
     var list= [];
-    fetch(url1 + '/api/activities')
+    fetch(url1 + '/api/activities/by-townhall/'+ localStorage.getItem("idTownHall"))
         .then(res => res.json())
         .then((out) => {
             $.each(out, function(index, value) {
-               
+               console.log(value)
             list.push(value); // por na lista de aitividades
             });
             /*let panels = document.querySelectorAll(".sponsor-div-delete");
@@ -273,43 +270,41 @@ function listSchedules(value ){
     var endDate;
     var diffDate;
     var schedule = new ScheduleInfo();
-   // schedule.body=value.title;
    schedule.dueDateClas= '';
     schedule.id = String(value.idActivity);
     schedule.calendarId = String(value.activityType.idActivityType);
     schedule.title = value.title;
     schedule.isReadOnly=true;
+    console.log(value.title)
+    console.log(value.init_data)
     startDate=moment(value.init_data);
     endDate = moment(value.end_data);
-    endDate.add((1), 'days');
+    //endDate.add((0), 'days');
     diffDate = endDate.diff(startDate, 'days');
+    //console.log(diffDate)
     schedule.isAllday =false; // nao sei o que faz
     schedule.category = 'time';
 
-    startDate.add((1), 'days'); // deixar para ja
+    //startDate.add((0), 'days'); // deixar para ja
     //startDate.hours(chance.integer({min: 0, max: 23}))
     //startDate.minutes(chance.bool() ? 0 : 30);
     schedule.start =/* startDate.toDate();*/ startDate.toDate();
     schedule.end = endDate.toDate();  // data que acaba a atividade
-    console.log(schedule.start);
-    schedule.goingDuration = chance.integer({min: 30, max: 120});
-     schedule.comingDuration = chance.integer({min: 30, max: 120});;
-    console.log(schedule.goingDuration);
+    //console.log(schedule.start);
+    //schedule.goingDuration = chance.integer({min: 30, max: 120});
+     //schedule.comingDuration = chance.integer({min: 30, max: 120});;
 
     schedule.isPrivate = true;
     schedule.location = value.address;
     
-    schedule.attendees = ["Câmara Municipal: " + value.institution.townHall.name,"Instituição: "+  value.institution.name];
+    schedule.attendees = ["Instituição: "+  value.institution.name];
     schedule.recurrenceRule = value.status
 
-    //schedule.state = "hello"; // cagar nisto em principio
     schedule.color = value.activityType.color;
     schedule.bgColor = value.activityType.color;
     schedule.dragBgColor = value.activityType.color;
     schedule.borderColor = value.activityType.color;
-   // console.log(startDate)
 
-   // generateTime(schedule, renderStart, renderEnd);
    if (schedule.category === 'milestone') {
     schedule.color = schedule.bgColor;
     schedule.bgColor = 'transparent';
@@ -331,9 +326,7 @@ if (chance.bool({ likelihood: 20 })) { // deve ser para cagar
     schedule.comingDuration = travelTime;
 }
 console.log(schedule)
-getTimeTemplate(schedule,true);
 ScheduleList.push(schedule); // por na lista de aitividades
-getTimeTemplate(schedule,true);
 
 }
 
@@ -384,11 +377,5 @@ getTimeTemplate(schedule,true);
         }
         html.push(' ' + schedule.title);
     }
-
     return html.join('');
 }
-
-
-
-
-

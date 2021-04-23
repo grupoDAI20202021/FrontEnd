@@ -17,7 +17,8 @@ document.getElementById("logout").addEventListener("click",logout);
         })
         
         .then(res => res.json())
-        .then((out) => {  window.location.href="../html/login.html";
+        .then((out) => { localStorage.clear();
+             window.location.href="../html/login.html";
         }).catch(err => console.error(err));
        
 

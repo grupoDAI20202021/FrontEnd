@@ -141,53 +141,56 @@ $(document).ready(function() {
           }
         }
       });
+      let addcamara = document.getElementById("addinstitution-btn");
+    
+      addcamara.addEventListener("click", function() {
+      
+       let data = {};
+      let email= document.getElementById("email-box").value;
+      let name = document.getElementById("nome-box").value;
+      let address = document.getElementById("morada-box").value;
+  
+      data.idTownHall = document.getElementById("checkboxCamara").value;
+       data.email = document.getElementById("email-box").value;
+       data.password = document.getElementById("password-box").value;
+       data.address = document.getElementById("morada-box").value;
+       data.confirmPassword = document.getElementById("confirmPassword-box").value;
+       data.name = document.getElementById("nome-box").value;
+       data.role = { idRole : 2 };
+      
+    
+      fetch(url + '/api/institutions', {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify(data)
+    }).then(function(response) {
+        if (!response.ok) {
+            console.log(response.status); //=> number 100–599
+            console.log(response.statusText); //=> String
+            console.log(response.headers); //=> Headers
+            console.log(response.url); //=> String
+        }
+        else {
+         
+          swal({
+            title: "A câmara foi adicionado com sucesso!",
+            icon: "success",
+          });
+           window.location.href="AdminInstituicao.html"  // provisorio
+              }
+            
+    }).then(function(result) {
+        console.log(result);
+    }).catch(function(err) {
+        console.error(err);
+    });
+    })
+    ;
   });
     }
 })(jQuery);
 
-let addinsttitution = function(event) {
 
-  let  = document.getElementById("addinstitution-btn");
-
-  addinstitution.addEventListener("click", function() {
-  
-   let data = {};
-  
-   data.email= document.getElementById("email-box").value;
-   data.name = document.getElementById("nome-box").value;
-   data.address = document.getElementById("morada-box").value;
-   data.password = document.getElementById("password-box").value;
-   data.confirmPassword = document.getElementById("confirmPassword-box").value;
-   data.role = {idRole: 1};
-    
-    fetch(url + '/api/institutions/', {
-      headers: { 'Content-Type': 'application/json' },
-      method: 'POST',
-      body: JSON.stringify(data)
-  }).then(function(response) {
-      if (!response.ok) {
-           openForm();
-          console.log(response.status); //=> number 100–599
-          console.log(response.statusText); //=> String
-          console.log(response.headers); //=> Headers
-          console.log(response.url); //=> String
-      }
-      else {
-        swal({
-          title: "A instituição foi adicionada com sucesso!",
-          icon: "success",
-        });
-             fillTable();
-            }
-          
-  }).then(function(result) {
-      console.log(result);
-  }).catch(function(err) {
-       openForm();
-      console.error(err);
-  });
-  }
-  )};
 
   function fillCheckbox() {
     fetch('http://127.0.0.1:8080/api/townhalls')
@@ -195,8 +198,11 @@ let addinsttitution = function(event) {
         .then((out) => {
             $('#checkboxCamara').empty();
             $.each(out, function(index, value) {
-                    obj.push({ "idTownHall": value.idTownHall });
-                    $('#checkboxCamara').append('<option id=' + value.idTownHall + 'value="Câmara Municipal">' + value.name + "</option>")
+                   // obj.push({ "idTownHall": value.idTownHall });
+                    $('#checkboxCamara').append('<option value="'+value.idTownHall+'">' + value.name + "</option>")
             });     
         }).catch(err => console.error(err))
       }
+
+
+      

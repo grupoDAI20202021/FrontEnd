@@ -104,7 +104,7 @@ const url="http://127.0.0.1:8080";
         var html = [];
         var start = moment(schedule.start.toUTCString());
         if (!isAllDay) {
-            html.push('<strong>' + start.format('HH:mm') + '</strong> ');
+           // html.push('<strong>' + start.format('HH:mm') + '</strong> ');
         }
         if (schedule.recurrenceRule== "Aprovada"||schedule.recurrenceRule== "Finalizada") {
             html.push('<span class="calendar-font-icon ic-lock-b"></span>');

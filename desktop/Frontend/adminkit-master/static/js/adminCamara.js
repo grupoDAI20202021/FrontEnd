@@ -35,6 +35,13 @@ function closeForm(){
     let cent = data.map(el => Object.values(el));
     console.log(cent)
 $(document).ready(function() {
+
+  
+ 
+    
+
+
+
   document.getElementById("userEmail").innerHTML= localStorage.getItem("EmailLogado");
     $('#Table-town-hall').DataTable({
       autoFill:true,
@@ -139,55 +146,59 @@ $(document).ready(function() {
                     }
                       }
                     }
+
+                   
                 }
               });
           }
         }
       });
+
+      
   });
 }
 })(jQuery);
  
-let addcamara = function(event) {
- 
-  let  = document.getElementById("addcamara-btn");
-  
-  addcamara.addEventListener("click", function() {
-  
-   let data = {};
-  
-   data.email = document.getElementById("email-box").value;
-   data.password = document.getElementById("password-box").value;
-   data.confirmPassword = document.getElementById("confirmpassword-box").value;
-   data.name = document.getElementById("nome-box").value;
-   data.role = {idRole: 2};
-  
 
-  fetch(url + '/api/townhalls/', {
-    headers: { 'Content-Type': 'application/json' },
-    method: 'POST',
-    body: JSON.stringify(data)
-}).then(function(response) {
-    if (!response.ok) {
-         openForm();
-        console.log(response.status); //=> number 100–599
-        console.log(response.statusText); //=> String
-        console.log(response.headers); //=> Headers
-        console.log(response.url); //=> String
-    }
-    else {
-      swal({
-        title: "A câmara foi adicionado com sucesso!",
-        icon: "success",
-      });
-           fillTable();
-          }
-        
-}).then(function(result) {
-    console.log(result);
-}).catch(function(err) {
-     openForm();
-    console.error(err);
-});
-}
-)};
+let addcamara = document.getElementById("addcamara-btn");
+    
+    addcamara.addEventListener("click", function() {
+    
+     let data = {};
+    let email= document.getElementById("email-txt").value;
+    let name = document.getElementById("nome-txt").value;
+    let address = document.getElementById("morada-txt").value;
+     data.email = document.getElementById("email-txt").value;
+     data.password = document.getElementById("password-txt").value;
+     data.address = document.getElementById("morada-txt").value;
+     data.confirmPassword = document.getElementById("confirmPassword-txt").value;
+     data.name = document.getElementById("nome-txt").value;
+     data.role = { idRole : 1 };
+    
+  
+    fetch(url + '/api/townhalls', {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify(data)
+  }).then(function(response) {
+      if (!response.ok) {
+          console.log(response.status); //=> number 100–599
+          console.log(response.statusText); //=> String
+          console.log(response.headers); //=> Headers
+          console.log(response.url); //=> String
+      }
+      else {
+       
+        swal({
+          title: "A câmara foi adicionado com sucesso!",
+          icon: "success",
+        });
+         window.location.href="AdminCamara.html"  // provisorio
+            }
+          
+  }).then(function(result) {
+      console.log(result);
+  }).catch(function(err) {
+      console.error(err);
+  });
+  })
