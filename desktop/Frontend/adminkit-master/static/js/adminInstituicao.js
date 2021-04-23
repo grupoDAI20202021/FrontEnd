@@ -32,6 +32,7 @@ function closeForm(){
   
     let cent = data.map(el => Object.values(el));
 $(document).ready(function() {
+  fillCheckbox()
   document.getElementById("userEmail").innerHTML= localStorage.getItem("EmailLogado");
     $('#Table-instituition').DataTable({
       autoFill:true,
@@ -135,7 +136,7 @@ $(document).ready(function() {
                     }
                       }
                     }
-                }
+                }               
               });
           }
         }
@@ -145,9 +146,9 @@ $(document).ready(function() {
 })(jQuery);
 
 let addinsttitution = function(event) {
- 
+
   let  = document.getElementById("addinstitution-btn");
-  
+
   addinstitution.addEventListener("click", function() {
   
    let data = {};
@@ -187,3 +188,15 @@ let addinsttitution = function(event) {
   });
   }
   )};
+
+  function fillCheckbox() {
+    fetch('http://127.0.0.1:8080/api/townhalls')
+        .then(res => res.json())
+        .then((out) => {
+            $('#checkboxCamara').empty();
+            $.each(out, function(index, value) {
+                    obj.push({ "idTownHall": value.idTownHall });
+                    $('#checkboxCamara').append('<option id=' + value.idTownHall + 'value="Câmara Municipal">' + value.name + "</option>")
+            });     
+        }).catch(err => console.error(err))
+      }
