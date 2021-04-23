@@ -174,7 +174,7 @@ fetch(url + '/api/townhalls/'+localStorage.getItem('userLogado')+'/sponsors', {
         }
         else {
           swal({
-            title: "O patrocinador foi adicionado com sucesso!",
+            title: "O patrocinador foi adicionada com sucesso!",
             icon: "success",
           });
                fillTable();

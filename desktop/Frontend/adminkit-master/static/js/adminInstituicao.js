@@ -173,7 +173,7 @@ let addinsttitution = function(event) {
       }
       else {
         swal({
-          title: "A instituição foi adicionado com sucesso!",
+          title: "A instituição foi adicionada com sucesso!",
           icon: "success",
         });
              fillTable();
