@@ -13896,6 +13896,7 @@ span.flatpickr-weekday {
 .max-h-425{
 	max-height: 425px;
 }
+<<<<<<< Updated upstream
 
 tr.selecionado td {
     background-color:#c5c8cb33 ;
@@ -14002,3 +14003,29 @@ color:gray;
 	.custom-wrapper .cancel-btn:hover {
 		color:#e74c3c;
 	}
+=======
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin: auto;
+	text-align: center;
+	height: 500px;
+	width: 500px;
+  }
+  
+  
+.button {
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: rgb(0, 79, 105);
+	cursor: pointer;
+	width: 50px;
+	height: 50px;
+	font-size: 18px;
+  }
+  
+
+ 
+>>>>>>> Stashed changes
