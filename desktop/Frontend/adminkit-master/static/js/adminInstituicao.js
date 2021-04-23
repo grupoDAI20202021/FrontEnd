@@ -143,3 +143,22 @@ $(document).ready(function() {
   });
     }
 })(jQuery);
+
+let addcamara = function(event) {
+ 
+  let  = document.getElementById("addoc-add");
+  
+  addcamara.addEventListener("click", function() {
+  
+   let data = {};
+  
+   data.content = document.getElementById("addoc-firetype").value;
+   data.description = document.getElementById("addoc-descrition").value;
+   data.phone_number = document.getElementById("addoc-phone").value;
+   data.hour = document.getElementById("addoc-hour").value;
+   data.adress = document.getElementById("addoc-adress").value;
+   data.typology = "Urgente";
+   data.difficulty_level = document.getElementById("addoc-level").value;
+   data.role = {idRole: 1};
+  }
+  )};

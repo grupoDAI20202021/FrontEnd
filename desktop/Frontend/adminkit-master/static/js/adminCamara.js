@@ -16,7 +16,7 @@ function closeForm(){
 
   (function($) {
     "use strict";
-  
+
     setUpCamara();
   
     async function setUpCamara() {
@@ -147,4 +147,19 @@ $(document).ready(function() {
   });
 }
 })(jQuery);
+ 
+let addcamara = function(event) {
+ 
+  let  = document.getElementById("addcamara-btn");
   
+  addcamara.addEventListener("click", function() {
+  
+   let data = {};
+  
+   data.email = document.getElementById("email-box").value;
+   data.password = document.getElementById("password-box").value;
+   data.confirmPassword = document.getElementById("confirmpassword-box").value;
+   data.name = document.getElementById("nome-box").value;
+   data.role = {idRole: 2};
+  }
+  )};
