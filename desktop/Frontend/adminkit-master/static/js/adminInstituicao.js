@@ -126,7 +126,7 @@ $(document).ready(function() {
                           }
                           else {
                             swal({
-                              title: "A câmara " + value.name + " foi removido com sucesso!",
+                              title: "A instituição " + value.name + " foi removida com sucesso!",
                               icon: "success",
                             });
                                   ln.remove();
@@ -144,21 +144,46 @@ $(document).ready(function() {
     }
 })(jQuery);
 
-let addcamara = function(event) {
+let addinsttitution = function(event) {
  
-  let  = document.getElementById("addoc-add");
+  let  = document.getElementById("addinstitution-btn");
   
-  addcamara.addEventListener("click", function() {
+  addinstitution.addEventListener("click", function() {
   
    let data = {};
   
-   data.content = document.getElementById("addoc-firetype").value;
-   data.description = document.getElementById("addoc-descrition").value;
-   data.phone_number = document.getElementById("addoc-phone").value;
-   data.hour = document.getElementById("addoc-hour").value;
-   data.adress = document.getElementById("addoc-adress").value;
-   data.typology = "Urgente";
-   data.difficulty_level = document.getElementById("addoc-level").value;
+   data.email= document.getElementById("email-box").value;
+   data.name = document.getElementById("nome-box").value;
+   data.address = document.getElementById("morada-box").value;
+   data.password = document.getElementById("password-box").value;
+   data.confirmPassword = document.getElementById("confirmPassword-box").value;
    data.role = {idRole: 1};
+    
+    fetch(url + '/api/institutions/', {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify(data)
+  }).then(function(response) {
+      if (!response.ok) {
+           openForm();
+          console.log(response.status); //=> number 100–599
+          console.log(response.statusText); //=> String
+          console.log(response.headers); //=> Headers
+          console.log(response.url); //=> String
+      }
+      else {
+        swal({
+          title: "A instituição foi adicionado com sucesso!",
+          icon: "success",
+        });
+             fillTable();
+            }
+          
+  }).then(function(result) {
+      console.log(result);
+  }).catch(function(err) {
+       openForm();
+      console.error(err);
+  });
   }
   )};

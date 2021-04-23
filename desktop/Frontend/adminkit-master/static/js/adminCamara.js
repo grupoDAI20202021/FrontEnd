@@ -103,7 +103,7 @@ $(document).ready(function() {
           selecionado = selecionado.getElementsByTagName("td");
           for (const ln of selecionados) {
             swal({
-                title: "Pretende eliminar a camara " + selecionado[1].innerHTML + " ?",
+                title: "Pretende eliminar a câmara " + selecionado[1].innerHTML + " ?",
                 icon: "warning",  
                 buttons: ["Sim", "Não"],
                 //dangerMode: true,
@@ -130,7 +130,7 @@ $(document).ready(function() {
                           }
                           else {
                             swal({
-                              title: "A câmara " + value.name + " foi removido com sucesso!",
+                              title: "A câmara " + value.name + " foi removida com sucesso!",
                               icon: "success",
                             });
                                   ln.remove();
@@ -161,5 +161,33 @@ let addcamara = function(event) {
    data.confirmPassword = document.getElementById("confirmpassword-box").value;
    data.name = document.getElementById("nome-box").value;
    data.role = {idRole: 2};
-  }
-  )};
+  
+
+  fetch(url + '/api/townhalls/', {
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    body: JSON.stringify(data)
+}).then(function(response) {
+    if (!response.ok) {
+         openForm();
+        console.log(response.status); //=> number 100–599
+        console.log(response.statusText); //=> String
+        console.log(response.headers); //=> Headers
+        console.log(response.url); //=> String
+    }
+    else {
+      swal({
+        title: "A câmara foi adicionado com sucesso!",
+        icon: "success",
+      });
+           fillTable();
+          }
+        
+}).then(function(result) {
+    console.log(result);
+}).catch(function(err) {
+     openForm();
+    console.error(err);
+});
+}
+)};
