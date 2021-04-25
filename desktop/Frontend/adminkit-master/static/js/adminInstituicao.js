@@ -149,7 +149,7 @@ $(document).ready(function() {
       let email= document.getElementById("email-box").value;
       let name = document.getElementById("nome-box").value;
       let address = document.getElementById("morada-box").value;
-  
+        let townhall = document.getElementById("checkboxCamara").options[document.getElementById("checkboxCamara").selectedIndex].text;
       data.idTownHall = document.getElementById("checkboxCamara").value;
        data.email = document.getElementById("email-box").value;
        data.password = document.getElementById("password-box").value;
@@ -173,10 +173,13 @@ $(document).ready(function() {
         else {
          
           swal({
-            title: "A câmara foi adicionado com sucesso!",
+            title: "A instituiçao foi adicionado com sucesso!",
             icon: "success",
           });
-           window.location.href="AdminInstituicao.html"  // provisorio
+          var table = $('#Table-instituition').DataTable();
+ 
+          table.row.add( { 0:email,1:name,2:address,3:townhall}).draw();
+          // window.location.href="AdminInstituicao.html"  // provisorio
               }
             
     }).then(function(result) {

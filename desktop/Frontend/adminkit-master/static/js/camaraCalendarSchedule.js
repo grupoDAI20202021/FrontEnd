@@ -204,6 +204,7 @@ function generateRandomSchedule(/*calendar, renderStart, renderEnd*/) {  // gera
     
    // var schedule = new ScheduleInfo();
     var list= [];
+    ScheduleList= [];
     fetch(url1 + '/api/activities/by-townhall/'+ localStorage.getItem("userLogado"))
         .then(res => res.json())
         .then((out) => {
@@ -217,6 +218,7 @@ function generateRandomSchedule(/*calendar, renderStart, renderEnd*/) {  // gera
                 
                 listSchedules(list[i])
             }
+            
             cal.createSchedules(ScheduleList);
            // console.log(ScheduleList)
         }).catch(err => console.error(err));
@@ -271,17 +273,22 @@ function listSchedules(value ){
     var diffDate;
     var schedule = new ScheduleInfo();
    schedule.dueDateClas= '';
+   if(value.sponsor==null){
+
+   }else {
+    schedule.state="Patrocinador: "+ value.sponsor.name;
+   }
     schedule.id = String(value.idActivity);
     schedule.calendarId = String(value.activityType.idActivityType);
     schedule.title = value.title;
     schedule.isReadOnly=true;
     startDate=moment(value.init_data);
     endDate = moment(value.end_data);
-    endDate.add((1), 'days');
+   // endDate.add((0), 'days');
     diffDate = endDate.diff(startDate, 'days');
     //console.log(diffDate)
     schedule.isAllday =false; // nao sei o que faz
-    schedule.category = 'allday';
+    schedule.category = 'time';
 
     startDate.add((1), 'days'); // deixar para ja
     //startDate.hours(chance.integer({min: 0, max: 23}))
@@ -323,8 +330,6 @@ if (chance.bool({ likelihood: 20 })) { // deve ser para cagar
     schedule.goingDuration = travelTime;
     schedule.comingDuration = travelTime;
 }
-console.log(schedule)
-getTimeTemplate(schedule,true);
 ScheduleList.push(schedule); // por na lista de aitividades
 getTimeTemplate(schedule,true);
 

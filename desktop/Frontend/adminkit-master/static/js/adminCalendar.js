@@ -32,7 +32,7 @@ const url="http://127.0.0.1:8080";
                 return getTimeTemplate(schedule, true);
             },
             time: function(schedule) {
-                return getTimeTemplate(schedule, false);
+                return getTimeTemplate(schedule, true);
             }
         }
     });
@@ -43,6 +43,7 @@ const url="http://127.0.0.1:8080";
             console.log('clickMore', e);
         },
         'clickSchedule': function(e) {
+          
             console.log('clickSchedule', e);
         },
         'clickDayname': function(date) {

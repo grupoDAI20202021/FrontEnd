@@ -193,7 +193,10 @@ let addcamara = document.getElementById("addcamara-btn");
           title: "A câmara foi adicionado com sucesso!",
           icon: "success",
         });
-         window.location.href="AdminCamara.html"  // provisorio
+        var table = $('#Table-town-hall').DataTable();
+        table.row.add( { 0:email,1:name,2:address}).draw();
+//table.draw();
+        // window.location.href="AdminCamara.html"  // provisorio
             }
           
   }).then(function(result) {

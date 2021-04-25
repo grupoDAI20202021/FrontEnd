@@ -65,7 +65,6 @@ var calendar;
 			activityType = await res.json();
 
             for(let i=0;i<activityType.length;i++){
-                console.log("hello")
                 calendar = new CalendarInfo();
                 id =activityType[i].idActivityType;
                 calendar.id = String(id);
@@ -275,21 +274,29 @@ function listSchedules(value ){
     var schedule = new ScheduleInfo();
    // schedule.body=value.title;
    schedule.dueDateClas= '';
+   if(value.sponsor==null){
+
+}else {
+ schedule.state="Patrocinador: "+ value.sponsor.name;
+}
     schedule.id = String(value.idActivity);
     schedule.calendarId = String(value.activityType.idActivityType);
     schedule.title = value.title;
     schedule.isReadOnly=true;
     startDate=moment(value.init_data);
     endDate = moment(value.end_data);
-    endDate.add((1), 'days');
+    
     diffDate = endDate.diff(startDate, 'days');
+    console.log(startDate)
     schedule.isAllday =false; // nao sei o que faz
     schedule.category = 'time';
 
     startDate.add((1), 'days'); // deixar para ja
+    //endDate.add((1), 'days');
+    console.log(startDate)
     //startDate.hours(chance.integer({min: 0, max: 23}))
     //startDate.minutes(chance.bool() ? 0 : 30);
-    schedule.start =/* startDate.toDate();*/ startDate.toDate();
+    schedule.start = startDate.toDate();
     schedule.end = endDate.toDate();  // data que acaba a atividade
     console.log(schedule.start);
     schedule.goingDuration = chance.integer({min: 30, max: 120});

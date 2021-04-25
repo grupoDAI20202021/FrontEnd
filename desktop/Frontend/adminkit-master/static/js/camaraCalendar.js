@@ -1,4 +1,7 @@
-const url="http://127.0.0.1:8080";
+const url = "http://127.0.0.1:8080";
+
+let SponsorList = [];
+let SponsorListId = [];
 
 'use strict';
 
@@ -10,7 +13,7 @@ const url="http://127.0.0.1:8080";
 (function(window, Calendar) {
     var cal, resizeThrottled;
     var useCreationPopup = false;
-    var useDetailPopup =true;
+    var useDetailPopup = true;
     var datePicker, selectedCalendar;
 
     cal = new Calendar('#calendar', {
@@ -22,7 +25,7 @@ const url="http://127.0.0.1:8080";
             milestone: function(schedule) {
                 return '<span style="color:red;"><i class="fa fa-flag"></i> ' + schedule.title + '</span>';
             },
-          milestoneTitle: function() {
+            milestoneTitle: function() {
                 return 'Milestone';
             },
             task: function(schedule) {
@@ -32,7 +35,7 @@ const url="http://127.0.0.1:8080";
                 return getTimeTemplate(schedule, true);
             },
             time: function(schedule) {
-                return getTimeTemplate(schedule, false);
+                return getTimeTemplate(schedule, true);
             }
         }
     });
@@ -43,7 +46,68 @@ const url="http://127.0.0.1:8080";
             console.log('clickMore', e);
         },
         'clickSchedule': function(e) {
-            console.log('clickSchedule', e);
+            if (e.schedule.recurrenceRule == "Por aprovar") {
+
+                Swal.fire({
+                    title: 'Deseja aprovar ou cancelar a atividade ' + e.schedule.title + "?",
+                    input: 'select',
+                    inputOptions: {
+
+                        SponsorList
+
+                    },
+                    inputPlaceholder: 'Selecione um patrocinador',
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: ' Aprovar',
+                    cancelButtonText: 'Eliminar',
+                    inputValidator: (value) => {
+                        return new Promise((resolve) => {
+                            if (value == '') {
+                                resolve("Selecione um patrocinador")
+                            } else {
+                                let data={};
+
+                                for(let i=0; i< SponsorList.length; i++){
+                                    if(value==i){
+                                        data.idSponsor = SponsorListId[i];
+                                        console.log(SponsorListId[i])
+                                    }
+                                }
+                                fetch('http://127.0.0.1:8080/api/activities/'+e.schedule.id+'/sponsor', {
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    method: 'PUT',
+                                    body: JSON.stringify(data)
+                                }).then(function(response) {
+                                    if (!response.ok) {
+                                        console.log(response.status); //=> number 100–599
+                                        console.log(response.statusText); //=> String
+                                        console.log(response.headers); //=> Headers
+                                        console.log(response.url); //=> String
+                                    } else {
+                                        //setSchedules();
+                                        cal.clear();
+                                        generateRandomSchedule(/*calendar, renderStart, renderEnd*/)
+                                        
+        //generateSchedule(cal.getViewName(), cal.getDateRangeStart(), cal.getDateRangeEnd());
+                                        Swal.close();
+                                    }
+                                }).then(function(result) {
+                                    console.log(result);
+                                }).catch(function(err) {
+                                    alert("Submission error");
+                                    console.error(err);
+                                });
+                            }
+                        })
+                    }
+                })
+
+
+            }
+            console.log('clickSchedule', e.schedule);
         },
         'clickDayname': function(date) {
             console.log('clickDayname', date);
@@ -71,9 +135,9 @@ const url="http://127.0.0.1:8080";
         },
         'afterRenderSchedule': function(e) {
             var schedule = e.schedule;
-             var element = cal.getElement(schedule.id, schedule.calendarId);
-             getTimeTemplate(schedule,false)
-             console.log('afterRenderSchedule', e.schedule);
+            var element = cal.getElement(schedule.id, schedule.calendarId);
+            getTimeTemplate(schedule, false)
+            console.log('afterRenderSchedule', e.schedule);
         },
         'clickTimezonesCollapseBtn': function(timezonesCollapsed) {
             console.log('timezonesCollapsed', timezonesCollapsed);
@@ -93,7 +157,7 @@ const url="http://127.0.0.1:8080";
             return true;
         }
     });
-    document.getElementById("userEmail").innerHTML= localStorage.getItem("EmailLogado");
+    document.getElementById("userEmail").innerHTML = localStorage.getItem("EmailLogado");
     /**
      * Get time template for time and all-day
      * @param {Schedule} schedule - schedule
@@ -106,12 +170,15 @@ const url="http://127.0.0.1:8080";
         if (!isAllDay) {
             html.push('<strong>' + start.format('HH:mm') + '</strong> ');
         }
-        if (schedule.recurrenceRule== "Aprovada"||schedule.recurrenceRule== "Finalizada") {
+        if (schedule.recurrenceRule == "Aprovada" || schedule.recurrenceRule == "Finalizada") {
             html.push('<span class="calendar-font-icon ic-lock-b"></span>');
-            html.push(' ' + schedule.start.toDate().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})+" "+schedule.title);
+            html.push(' ' + schedule.start.toDate().toLocaleTimeString(navigator.language, {
+                hour: '2-digit',
+                minute: '2-digit'
+            }) + " " + schedule.title);
         } else {
             if (schedule.isReadOnly) {
-               // html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
+                // html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
                 html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
             } else if (schedule.recurrenceRule) {
                 html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
@@ -120,8 +187,11 @@ const url="http://127.0.0.1:8080";
             } else if (schedule.location) {
                 html.push('<span class="calendar-font-icon ic-location-b"></span>');
             }
-           // console.log(schedule.start)
-            html.push(' ' + schedule.start.toDate().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})+" "+schedule.title);
+            // console.log(schedule.start)
+            html.push(' ' + schedule.start.toDate().toLocaleTimeString(navigator.language, {
+                hour: '2-digit',
+                minute: '2-digit'
+            }) + " " + schedule.title);
         }
 
         return html.join('');
@@ -212,7 +282,7 @@ const url="http://127.0.0.1:8080";
         setSchedules();
     }
 
-    function onNewSchedule() {  //nao sei
+    function onNewSchedule() { //nao sei
         var title = $('#new-schedule-title').val();
         var location = $('#new-schedule-location').val();
         var isAllDay = document.getElementById('new-schedule-allday').checked;
@@ -249,7 +319,7 @@ const url="http://127.0.0.1:8080";
         var target = $(e.target).closest('a[role="menuitem"]')[0];
         var calendarId = getDataAction(target);
         changeNewScheduleCalendar(calendarId);
-        
+
     }
 
     function changeNewScheduleCalendar(calendarId) {
@@ -276,7 +346,8 @@ const url="http://127.0.0.1:8080";
             });
         }
     }
-    function saveNewSchedule(scheduleData) {// criar atividade
+
+    function saveNewSchedule(scheduleData) { // criar atividade
         var calendar = scheduleData.calendar || findCalendar(scheduleData.calendarId);
         var schedule = {
             id: String(chance.guid()),
@@ -344,7 +415,7 @@ const url="http://127.0.0.1:8080";
         refreshScheduleVisibility();
     }
 
-    function refreshScheduleVisibility() {// ao mudar o range do tipo de atividades no calendario
+    function refreshScheduleVisibility() { // ao mudar o range do tipo de atividades no calendario
         var calendarElements = Array.prototype.slice.call(document.querySelectorAll('#calendarList input'));
 
         CalendarList.forEach(function(calendar) {
@@ -359,7 +430,7 @@ const url="http://127.0.0.1:8080";
         });
     }
 
-    function setDropdownCalendarType() {// menu dropdown que muda o alcance do calendario- exemplo mes para semana
+    function setDropdownCalendarType() { // menu dropdown que muda o alcance do calendario- exemplo mes para semana
         var calendarTypeName = document.getElementById('calendarTypeName');
         var calendarTypeIcon = document.getElementById('calendarTypeIcon');
         var options = cal.getOptions();
@@ -387,10 +458,10 @@ const url="http://127.0.0.1:8080";
         calendarTypeIcon.className = iconClassName;
     }
 
-    function currentCalendarDate(format) {// nao sei
-      var currentDate = moment([cal.getDate().getFullYear(), cal.getDate().getMonth(), cal.getDate().getDate()]);
+    function currentCalendarDate(format) { // nao sei
+        var currentDate = moment([cal.getDate().getFullYear(), cal.getDate().getMonth(), cal.getDate().getDate()]);
 
-      return currentDate.format(format);
+        return currentDate.format(format);
     }
 
     function setRenderRangeText() { // nao sei
@@ -416,9 +487,8 @@ const url="http://127.0.0.1:8080";
         cal.clear();
         //generateSchedule(cal.getViewName(), cal.getDateRangeStart(), cal.getDateRangeEnd());
         cal.createSchedules(ScheduleList);
-        for(let i=0; ScheduleList.length;i++){
-            console.log("hello")
-            getTimeTemplate(ScheduleList[i],ScheduleList.isAllDay)
+        for (let i = 0; ScheduleList.length; i++) {
+            getTimeTemplate(ScheduleList[i], ScheduleList.isAllDay)
         }
 
         refreshScheduleVisibility();
@@ -430,14 +500,14 @@ const url="http://127.0.0.1:8080";
         $('#lnb-calendars').on('change', onChangeCalendars); // CLICAR NOS TIPOS DE ATIVIDADE
 
         $('#btn-save-schedule').on('click', onNewSchedule);
-        $('#btn-new-schedule').on('click', createNewSchedule);  // BOTAO CRIAR
+        $('#btn-new-schedule').on('click', createNewSchedule); // BOTAO CRIAR
 
         $('#dropdownMenu-calendars-list').on('click', onChangeNewScheduleCalendar);
 
         window.addEventListener('resize', resizeThrottled);
     }
 
-    function getDataAction(target) {// mover as datas do calendario
+    function getDataAction(target) { // mover as datas do calendario
 
         return target.dataset ? target.dataset.action : target.getAttribute('data-action');
     }
@@ -460,31 +530,42 @@ let activityType;
 (function() {
 
     setUpActivityType();
-  
-			async function setUpActivityType() {
-		
-			const res = await fetch(url + '/api/activitiestype', {
-			  headers: {
-				  'Content-Type': 'application/json'
-			  },
-			  mode: 'cors',
-			  method: 'GET',
-			  credentials: 'include'
-		  }); 
-			activityType = await res.json();
 
-    var calendarList = document.getElementById('calendarList');
-    var html = [];
-    CalendarList.forEach(function(calendar) {                  // colocar as atividade no menu de lado
-        html.push('<div class="lnb-calendars-item"><label style="width:max-content">' +
-            '<input type="checkbox" class="tui-full-calendar-checkbox-round" value="' + calendar.id + '" checked>' +
-            '<span style="border-color: ' + calendar.borderColor + '; background-color: ' + calendar.borderColor + ';"></span>' +
-            '<span>' + calendar.name + '</span>' +
-            '</label></div>'
-        );
-    });
-    calendarList.innerHTML = html.join('\n');
+    async function setUpActivityType() {
 
+        const res = await fetch(url + '/api/activitiestype', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors',
+            method: 'GET',
+            credentials: 'include'
+        });
+        activityType = await res.json();
 
-}
+        var calendarList = document.getElementById('calendarList');
+        var html = [];
+        CalendarList.forEach(function(calendar) { // colocar as atividade no menu de lado
+            html.push('<div class="lnb-calendars-item"><label style="width:max-content">' +
+                '<input type="checkbox" class="tui-full-calendar-checkbox-round" value="' + calendar.id + '" checked>' +
+                '<span style="border-color: ' + calendar.borderColor + '; background-color: ' + calendar.borderColor + ';"></span>' +
+                '<span>' + calendar.name + '</span>' +
+                '</label></div>'
+            );
+        });
+        calendarList.innerHTML = html.join('\n');
+
+        fetch('http://127.0.0.1:8080/api/townhalls/' + localStorage.getItem("userLogado") + '/sponsors')
+            .then(res => res.json())
+            .then((out) => {
+                $.each(out, function(index, value) {
+                    console.log(value)
+                    SponsorList.push(value.name);
+                    SponsorListId.push(value.idSponsor)
+                });
+            }).catch(err => console.error(err))
+
+        console.log(SponsorList);
+
+    }
 })();
