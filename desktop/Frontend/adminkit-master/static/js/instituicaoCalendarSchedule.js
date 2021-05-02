@@ -204,6 +204,7 @@ function generateRandomSchedule(/*calendar, renderStart, renderEnd*/) {  // gera
     
    // var schedule = new ScheduleInfo();
     var list= [];
+    ScheduleList= [];
     fetch(url1 + '/api/activities/by-townhall/'+ localStorage.getItem("idTownHall"))
         .then(res => res.json())
         .then((out) => {
@@ -274,11 +275,21 @@ function listSchedules(value ){
     schedule.id = String(value.idActivity);
     schedule.calendarId = String(value.activityType.idActivityType);
     schedule.title = value.title;
-    schedule.isReadOnly=true;
-    console.log(value.title)
+    if( value.institution.idInstitution != localStorage.getItem("userLogado")){
+        schedule.isReadOnly=true;
+        } else {
+    if(value.status=="Por aprovar" ){
+        schedule.isReadOnly=false;
+    }else {
+        schedule.isReadOnly=true;
+}
+}
     console.log(value.init_data)
     startDate=moment(value.init_data);
+    console.log(startDate)
     endDate = moment(value.end_data);
+    console.log(startDate)
+    console.log(value.init_data)
     //endDate.add((0), 'days');
     diffDate = endDate.diff(startDate, 'days');
     //console.log(diffDate)
@@ -288,8 +299,12 @@ function listSchedules(value ){
     //startDate.add((0), 'days'); // deixar para ja
     //startDate.hours(chance.integer({min: 0, max: 23}))
     //startDate.minutes(chance.bool() ? 0 : 30);
-    schedule.start =/* startDate.toDate();*/ startDate.toDate();
-    schedule.end = endDate.toDate();  // data que acaba a atividade
+    schedule.start =/* startDate.toDate();*/ startDate.add(1, 'hour')
+    .toDate();
+    schedule.end = endDate  // data que acaba a atividade
+
+     .add( 1, 'hour')
+        .toDate();
     //console.log(schedule.start);
     //schedule.goingDuration = chance.integer({min: 30, max: 120});
      //schedule.comingDuration = chance.integer({min: 30, max: 120});;
@@ -313,7 +328,7 @@ function listSchedules(value ){
 }
 // deve ser para cagar em principio
 schedule.raw.memo = chance.sentence();
-schedule.raw.creator.name = chance.name();
+schedule.raw.creator.name = value.institution.idInstitution;
 schedule.raw.creator.avatar = chance.avatar();
 schedule.raw.creator.company = chance.company();
 schedule.raw.creator.email = chance.email();
@@ -325,9 +340,7 @@ if (chance.bool({ likelihood: 20 })) { // deve ser para cagar
     schedule.goingDuration = travelTime;
     schedule.comingDuration = travelTime;
 }
-console.log(schedule)
 ScheduleList.push(schedule); // por na lista de aitividades
-
 }
 
  async function setUpCalendar(/*viewName, renderStart, renderEnd*/) { // gerar o calendario todo

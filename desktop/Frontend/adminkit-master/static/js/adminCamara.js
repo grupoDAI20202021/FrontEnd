@@ -126,7 +126,7 @@ $(document).ready(function() {
                     let a = selecionado[0].innerHTML;
                     for (const value of data) {
                       if(value.email === a){
-                        await fetch(url + '/api/townhalls/' + value.idTownHall, { method: "DELETE" })
+                        await fetch(url + '/api/townhalls/' + value.idTownHall+'/deactivate', { method: "PUT" })
                         .then(function(response) {
                           if (!response.ok) {
                             console.log(response.status); //=> number 100â€“599

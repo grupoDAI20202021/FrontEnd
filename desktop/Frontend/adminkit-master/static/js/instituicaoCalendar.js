@@ -53,20 +53,91 @@ const url="http://127.0.0.1:8080";
             saveNewSchedule(e);
         },
         'beforeUpdateSchedule': function(e) {
-            var schedule = e.schedule;
+            let data= {};
+            console.log('beforeUpdateSchedule', e.changes);
+            
+            if(e.changes.title==undefined){
+               data.title= e.schedule.title;
+               console.log("hel")
+            } else {
+                data.title= e.changes.title;
+            }
+
+            if(e.changes.location==undefined){
+                data.address= e.schedule.location;
+             } else {
+                 data.address= e.changes.location;
+             }
+
+             if(e.changes.end==undefined){
+                data.end_data= new Date(e.schedule.end.toDate());
+             } else {
+                 data.end_data= new Date(e.changes.end.toDate());
+             }
+
+             if(e.changes.start==undefined){
+                data.init_data= new Date(e.schedule.start.toDate());
+             } else {
+                 data.init_data= new Date(e.changes.start.toDate());
+             }
+            fetch('http://127.0.0.1:8080/api/activities/'+e.schedule.id, {
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    method: 'PUT',
+                                    body: JSON.stringify(data)
+                                }).then(function(response) {
+                                    if (!response.ok) {
+                                        console.log(response.status); //=> number 100–599
+                                        console.log(response.statusText); //=> String
+                                        console.log(response.headers); //=> Headers
+                                        console.log(response.url); //=> String
+                                    } else {
+                                        cal.clear();
+                                        generateRandomSchedule(/*calendar, renderStart, renderEnd*/)
+                                        
+        //generateSchedule(cal.getViewName(), cal.getDateRangeStart(), cal.getDateRangeEnd());
+                                    }
+                                }).then(function(result) {
+                                    console.log(result);
+                                }).catch(function(err) {
+                                    alert("Submission error");
+                                    console.error(err);
+                                });
+           /* var schedule = e.schedule;
             var changes = e.changes;
 
-            console.log('beforeUpdateSchedule', e);
+            console.log('beforeUpdateSchedule', changes);
 
             if (changes && !changes.isAllDay && schedule.category === 'allday') {
                 changes.category = 'time';
-            }
+            }*/
 
-            cal.updateSchedule(schedule.id, schedule.calendarId, changes);
-            refreshScheduleVisibility();
+            //cal.updateSchedule(schedule.id, schedule.calendarId, changes);
+            //refreshScheduleVisibility();
         },
         'beforeDeleteSchedule': function(e) {
             console.log('beforeDeleteSchedule', e);
+
+            fetch(url + '/api/activities/'+e.schedule.id, {
+                headers: { 'Content-Type': 'application/json' },
+                method: 'DELETE',
+            }).then(function(response) {
+                if (!response.ok) {
+                    console.log(response.status); //=> number 100–599
+                    console.log(response.statusText); //=> String
+                    console.log(response.headers); //=> Headers
+                    console.log(response.url); //=> String
+                }
+                else {
+                    
+                      }
+                    
+            }).then(function(result) {
+                console.log(result);
+            }).catch(function(err) {
+                console.error(err);
+            });
             cal.deleteSchedule(e.schedule.id, e.schedule.calendarId);
         },
         'afterRenderSchedule': function(e) {
@@ -277,7 +348,43 @@ const url="http://127.0.0.1:8080";
         }
     }
     function saveNewSchedule(scheduleData) {// criar atividade
+
         var calendar = scheduleData.calendar || findCalendar(scheduleData.calendarId);
+        let data= {};
+        let dstart = new Date(scheduleData.start.toDate());
+        let dend = new Date(scheduleData.end.toDate());
+
+        let startdate= moment(dstart).format('YYYY-MM-DD HH:mm:SS')
+        let enddate = moment(dend).format('YYYY-MM-DD HH:mm:SS')
+        data.init_data = dstart;
+        data.end_data = dend;
+        data.address= scheduleData.location;
+        data.title= scheduleData.title;
+        data.spaces= 4;
+        data.idActivityType=calendar.id;
+        data.idInstitution= localStorage.getItem("userLogado");
+        console.log(data);
+
+fetch(url + '/api/activities', {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify(data)
+    }).then(function(response) {
+        if (!response.ok) {
+            console.log(response.status); //=> number 100–599
+            console.log(response.statusText); //=> String
+            console.log(response.headers); //=> Headers
+            console.log(response.url); //=> String
+        }
+        else {
+              }
+            
+    }).then(function(result) {
+        console.log(result);
+    }).catch(function(err) {
+        console.error(err);
+    });
+
         var schedule = {
             id: String(chance.guid()),
             title: scheduleData.title,

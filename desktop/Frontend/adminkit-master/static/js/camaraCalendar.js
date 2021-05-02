@@ -46,23 +46,23 @@ let SponsorListId = [];
             console.log('clickMore', e);
         },
         'clickSchedule': function(e) {
+            setTimeout(function(){
             if (e.schedule.recurrenceRule == "Por aprovar") {
 
                 Swal.fire({
                     title: 'Deseja aprovar ou cancelar a atividade ' + e.schedule.title + "?",
                     input: 'select',
-                    inputOptions: {
-
-                        SponsorList
-
-                    },
+                    inputOptions:   SponsorList
+                    ,
                     inputPlaceholder: 'Selecione um patrocinador',
                     showCloseButton: true,
-                    showCancelButton: true,
+                    showDenyButton: true,
                     confirmButtonText: ' Aprovar',
-                    cancelButtonText: 'Eliminar',
+                    denyButtonText: 'Eliminar',
                     inputValidator: (value) => {
+                        
                         return new Promise((resolve) => {
+                            console.log(value)
                             if (value == '') {
                                 resolve("Selecione um patrocinador")
                             } else {
@@ -103,10 +103,41 @@ let SponsorListId = [];
                             }
                         })
                     }
+                }).then((result) => {
+
+                     if (result.isDenied) {
+
+                        fetch(url + '/api/activities/'+e.schedule.id, {
+                            headers: { 'Content-Type': 'application/json' },
+                            method: 'DELETE',
+                        }).then(function(response) {
+                            if (!response.ok) {
+                                console.log(response.status); //=> number 100–599
+                                console.log(response.statusText); //=> String
+                                console.log(response.headers); //=> Headers
+                                console.log(response.url); //=> String
+                            }
+                            else {
+                                cal.clear();
+                                        generateRandomSchedule(/*calendar, renderStart, renderEnd*/)
+                             
+                              swal({
+                                title: "A atividade foi removida com sucesso!",
+                                icon: "success",
+                              });
+                                  }
+                                
+                        }).then(function(result) {
+                            console.log(result);
+                        }).catch(function(err) {
+                            console.error(err);
+                        });
+
+                    }
                 })
-
-
             }
+            }, 5000);
+            
             console.log('clickSchedule', e.schedule);
         },
         'clickDayname': function(date) {
@@ -560,8 +591,10 @@ let activityType;
             .then((out) => {
                 $.each(out, function(index, value) {
                     console.log(value)
+                    if(value.active==1){
                     SponsorList.push(value.name);
                     SponsorListId.push(value.idSponsor)
+                    }
                 });
             }).catch(err => console.error(err))
 

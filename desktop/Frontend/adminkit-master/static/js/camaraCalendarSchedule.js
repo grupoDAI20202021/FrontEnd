@@ -290,11 +290,15 @@ function listSchedules(value ){
     schedule.isAllday =false; // nao sei o que faz
     schedule.category = 'time';
 
-    startDate.add((1), 'days'); // deixar para ja
+    //startDate.add((1), 'days'); // deixar para ja
     //startDate.hours(chance.integer({min: 0, max: 23}))
     //startDate.minutes(chance.bool() ? 0 : 30);
-    schedule.start =/* startDate.toDate();*/ startDate.toDate();
-    schedule.end = endDate.toDate();  // data que acaba a atividade
+    schedule.start =/* startDate.toDate();*/ startDate.add(1, 'hour')
+    .toDate();
+    schedule.end = endDate  // data que acaba a atividade
+
+     .add( 1, 'hour')
+        .toDate();
     //console.log(schedule.start);
     schedule.goingDuration = chance.integer({min: 30, max: 120});
      schedule.comingDuration = chance.integer({min: 30, max: 120});;
