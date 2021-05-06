@@ -153,7 +153,7 @@
 				<div class="imgprofileinsti">
 					<img src="..\img\avatars\default-profile.jpg">
 				</div> 
-				<form name = "NewUser" onsubmit= "changeEmail()">
+				<form name = "NewUser" >
 					<h1>PROFILE</h1>
 					<tr>
 					<td>Nome:</td> 
@@ -167,25 +167,25 @@
 					<br/>
 					<tr>
 						<td>Email:</td> 
-						<td><input type = "text" name = ""/></td> 
+						<td><input id="newEmail"type = "text" name = ""/></td> 
 						</tr>
 
 						
 							
 			
-				<input type = "submit" value = "Atualizar email"/>
+				<input id="updateEmail" type = "button" value = "Atualizar email"/>
 				<br/><br/>
-				<form name = "NewUser" onsubmit= "changePassword()">
+				<form name = "NewUser">
 					<td>Password:</td>
-					<td><input type = "password" name = "pwd"/></td>
+					<td><input id="newPass" type = "password" name = "pwd"/></td>
 						<br/><br/>
 			
 					<tr>
 					<td>Confirm Password:</td>
-					<td><input type = "password" name = "confirmPwd"/></td>
+					<td><input id="confirmPass" type = "password" name = "confirmPwd"/></td>
 					
 			
-				<input type = "submit" value = "Atualizar password"/>
+				<input id ="updatepass"type = "button" value = "Atualizar password"/>
 			
 			
 			  </div>
@@ -232,7 +232,7 @@
 					  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 					  <script src="../vendor/bootstrap/js1/datatables-demo.js"></script>
 					  <script src="../js/app.js"></script>
-	  <script src="../js/instituicaoAtividade.js"></script>
+	  <script src="../js/profile.js"></script>
 	  <script src="../js/logout.js"></script>
 	  
 	 

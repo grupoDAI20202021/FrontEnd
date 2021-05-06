@@ -53,6 +53,7 @@ const url="http://127.0.0.1:8080";
             saveNewSchedule(e);
         },
         'beforeUpdateSchedule': function(e) {
+            let currentDate = new Date();
             let data= {};
             console.log('beforeUpdateSchedule', e.changes);
             
@@ -79,7 +80,10 @@ const url="http://127.0.0.1:8080";
                 data.init_data= new Date(e.schedule.start.toDate());
              } else {
                  data.init_data= new Date(e.changes.start.toDate());
+                
              }
+             if(data.init_data>currentDate){
+                 console.log(currentDate)
             fetch('http://127.0.0.1:8080/api/activities/'+e.schedule.id, {
                                     headers: {
                                         'Content-Type': 'application/json'
@@ -115,6 +119,7 @@ const url="http://127.0.0.1:8080";
 
             //cal.updateSchedule(schedule.id, schedule.calendarId, changes);
             //refreshScheduleVisibility();
+        }
         },
         'beforeDeleteSchedule': function(e) {
             console.log('beforeDeleteSchedule', e);
@@ -348,6 +353,7 @@ const url="http://127.0.0.1:8080";
         }
     }
     function saveNewSchedule(scheduleData) {// criar atividade
+        let currentDate = new Date();
 
         var calendar = scheduleData.calendar || findCalendar(scheduleData.calendarId);
         let data= {};
@@ -364,7 +370,7 @@ const url="http://127.0.0.1:8080";
         data.idActivityType=calendar.id;
         data.idInstitution= localStorage.getItem("userLogado");
         console.log(data);
-
+        if(data.init_data>currentDate){
 fetch(url + '/api/activities', {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
@@ -377,6 +383,8 @@ fetch(url + '/api/activities', {
             console.log(response.url); //=> String
         }
         else {
+            cal.clear();
+            generateRandomSchedule(/*calendar, renderStart, renderEnd*/)
               }
             
     }).then(function(result) {
@@ -413,6 +421,7 @@ fetch(url + '/api/activities', {
         cal.createSchedules([schedule]);
 
         refreshScheduleVisibility();
+    }
     }
 
     function onChangeCalendars(e) { // clicar no botao "view all"
