@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		
 });
 function fillTable() {
-    fetch(url + '/api/lastactivities')
+    fetch(url + '/api/lastactivities',{
+		credentials: 'include'
+	})
         .then(res => res.json())
         .then((out) => {
             $('#tableActivities tbody').empty();
@@ -197,7 +199,9 @@ function fillTable() {
 			document.getElementById("activity3").innerHTML= datadashboardline[0].name
 			document.getElementById("activity4").innerHTML= datadashboardline[0].name
 
-			fetch(url + '/api/activitiestype/'+datadashboardline[0].idActivityType)
+			fetch(url + '/api/activitiestype/'+datadashboardline[0].idActivityType,{
+				credentials: 'include'
+			})
 			.then(res => res.json())
 			.then((out) => {
 				console.log(out)
@@ -220,7 +224,9 @@ function fillTable() {
 			document.getElementById("activity3").innerHTML= datadashboardline[currentActivity].name
 			document.getElementById("activity4").innerHTML= datadashboardline[currentActivity].name
 
-			fetch(url + '/api/activitiestype/'+datadashboardline[currentActivity].idActivityType)
+			fetch(url + '/api/activitiestype/'+datadashboardline[currentActivity].idActivityType,{
+				credentials: 'include'
+			})
 			.then(res => res.json())
 			.then((out) => {
 				
@@ -240,7 +246,9 @@ function fillTable() {
 			document.getElementById("activity3").innerHTML= datadashboardline[0].name
 			document.getElementById("activity4").innerHTML= datadashboardline[0].name
 
-			fetch(url + '/api/activitiestype/'+datadashboardline[0].idActivityType)
+			fetch(url + '/api/activitiestype/'+datadashboardline[0].idActivityType,{
+				credentials: 'include'
+			})
 			.then(res => res.json())
 			.then((out) => {
 				console.log(out)

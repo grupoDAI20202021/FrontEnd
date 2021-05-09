@@ -17,6 +17,7 @@ function changeEmail() {
     },
       method: "PUT",
       body:JSON.stringify(data),
+      credentials: 'include'
     }
   )
     .then((res) => {
@@ -42,6 +43,7 @@ function changePassword() {
     },
       method: "PUT",
       body:JSON.stringify(data),
+      credentials: 'include'
     }
   )
     .then((res) => {
@@ -62,7 +64,9 @@ window.onload = function () {
   if (role === "ROLE_TOWNHALL") {
     endpoint = "townhalls";
   }
-  fetch(`http://127.0.0.1:8080/api/${endpoint}/${user}`)
+  fetch(`http://127.0.0.1:8080/api/${endpoint}/${user}`,{
+    credentials: 'include'
+  })
   .then(res2 => res2.json())
   .then((out2) => {
     console.log(out2)

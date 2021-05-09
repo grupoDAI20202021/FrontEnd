@@ -205,7 +205,10 @@ function generateRandomSchedule(/*calendar, renderStart, renderEnd*/) {  // gera
    // var schedule = new ScheduleInfo();
     var list= [];
     ScheduleList= [];
-    fetch(url1 + '/api/activities/by-townhall/'+ localStorage.getItem("idTownHall"))
+    fetch(url1 + '/api/activities/by-townhall/'+ localStorage.getItem("idTownHall"),{
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+    })
         .then(res => res.json())
         .then((out) => {
             $.each(out, function(index, value) {

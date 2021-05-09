@@ -27,7 +27,8 @@ function closeForm(){
       fetch(url + '/api/activities/' + localStorage.getItem("idActivity") + '/evaluation/', {
         headers: { 'Content-Type': 'application/json' },
         method: 'PUT',
-        body: JSON.stringify(presence)
+        body: JSON.stringify(presence),
+        credentials: 'include'
     }).then(function(response) {
         if (!response.ok) {
             console.log(response.status); //=> number 100–599
@@ -54,7 +55,8 @@ function closeForm(){
         fetch(url + '/api/activities/' + localStorage.getItem("idActivity") + '/children/' + datatable[c].id + '/presence', {
                         headers: { 'Content-Type': 'application/json' },
                         method: 'PUT',
-                        body: JSON.stringify(presence)
+                        body: JSON.stringify(presence),
+                        credentials: 'include'
                     }).then(function(response) {
                         if (!response.ok) {
                             console.log(response.status); //=> number 100–599
@@ -74,7 +76,8 @@ function closeForm(){
         fetch(url + '/api/activities/' + localStorage.getItem("idActivity") + '/children/' + datatable[c].id + '/presence', {
                         headers: { 'Content-Type': 'application/json' },
                         method: 'PUT',
-                        body: JSON.stringify(presence)
+                        body: JSON.stringify(presence),
+                        credentials: 'include'
                     }).then(function(response) {
                         if (!response.ok) {
                             console.log(response.status); //=> number 100–599
@@ -224,7 +227,9 @@ function closeForm(){
                     for (const value of data) {
                       if(value.title == a && value.address ==b && value.init_data == c){
                         localStorage.setItem("idActivity",value.idActivity);
-                        const res = await fetch(url + '/api/activities/'+ value.idActivity+'/children')
+                        const res = await fetch(url + '/api/activities/'+ value.idActivity+'/children',{
+                          credentials: 'include'
+                        })
                         const dataTable = await res.json();
                         $('#tablePresences tbody').empty();
                         for(let i =0; i<dataTable.length;i++){

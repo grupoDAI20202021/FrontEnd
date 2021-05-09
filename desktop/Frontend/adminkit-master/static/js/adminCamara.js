@@ -126,7 +126,9 @@ $(document).ready(function() {
                     let a = selecionado[0].innerHTML;
                     for (const value of data) {
                       if(value.email === a){
-                        await fetch(url + '/api/townhalls/' + value.idTownHall+'/deactivate', { method: "PUT" })
+                        await fetch(url + '/api/townhalls/' + value.idTownHall+'/deactivate', { 
+                          method: "PUT", 
+                          credentials: 'include' })
                         .then(function(response) {
                           if (!response.ok) {
                             console.log(response.status); //=> number 100â€“599
@@ -179,7 +181,8 @@ let addcamara = document.getElementById("addcamara-btn");
     fetch(url + '/api/townhalls', {
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      credentials: 'include'
   }).then(function(response) {
       if (!response.ok) {
           console.log(response.status); //=> number 100–599

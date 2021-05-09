@@ -206,7 +206,9 @@ function generateRandomSchedule(/*calendar, renderStart, renderEnd*/) {  // gera
     
    // var schedule = new ScheduleInfo();
     var list= [];
-    fetch(url1 + '/api/activities')
+    fetch(url1 + '/api/activities' ,{
+        credentials: 'include'
+    })
         .then(res => res.json())
         .then((out) => {
             $.each(out, function(index, value) {

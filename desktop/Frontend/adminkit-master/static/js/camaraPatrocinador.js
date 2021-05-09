@@ -35,7 +35,9 @@ function fillTable() {
     let count = 0;
     let screen = document.getElementById("sponsor-container");
     let txt = "";
-    fetch(url + '/api/townhalls/' + localStorage.getItem('userLogado') + '/sponsors')
+    fetch(url + '/api/townhalls/' + localStorage.getItem('userLogado') + '/sponsors',{
+        credentials: 'include'
+    })
         .then(res => res.json())
         .then((out) => {
             refillSponsor();
@@ -105,7 +107,8 @@ function OpenPanel(elem) {
         .then((willDelete) => {
             if (willDelete) {} else {
                 fetch(url + '/api/sponsors/' + elem.id, {
-                        method: "PUT"
+                        method: "PUT",
+                        credentials: 'include'
                     })
                     .then(function(response) {
                         if (!response.ok) {
@@ -194,7 +197,8 @@ async function submit() {
             'Content-Type': 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include'
     }).then(function(response) {
         if (!response.ok) {
             openForm();
@@ -235,10 +239,9 @@ async function post_photo(photoC, idSponsor) {
             mode: 'cors',
             method: 'PUT',
             body: photoC,
-            //credentials: 'include'
+            credentials: 'include'
         })
         .then(function(response) {
-            //console.log(response.headers.get('Set-Cookie'));
             console.log(response);
             if (!response.ok) {
                 throw new Error(response.statusText);
