@@ -5,7 +5,8 @@ const updateEmail = document.getElementById("updateEmail")
 updateEmail.onclick= changeEmail;
 
 function changeEmail() {
-  const email = document.getElementById("email_change").value;
+  let data= {};
+  data.email = document.getElementById("newEmail").value;
   let endpoint;
   if (role === "ROLE_INSTITUTION") {
     endpoint = "institution";
@@ -34,9 +35,10 @@ function changeEmail() {
 }
 
 function changePassword() {
-<<<<<<< HEAD
-  const password = document.getElementById("password_change").value;
-  const confirmPassword = document.getElementById("password_confirm").value;
+  let data= {};
+  data.password = document.getElementById("newPass").value;
+   data.confirmPassword = document.getElementById("confirmPass").value;
+  data.oldPassword= "wrbsfd";
   let endpoint;
   if (role === "ROLE_INSTITUTION") {
     endpoint = "institution";
@@ -47,16 +49,6 @@ function changePassword() {
   fetch(`http://127.0.0.1:8080/api/${endpoint}/${localStorage.getItem(
     "userLogado"
   )}/password`,
-=======
-  let data= {};
-  data.password = document.getElementById("newPass").value;
-   data.confirmPassword = document.getElementById("confirmPass").value;
-  data.oldPassword= "wrbsfd";
-  fetch(
-    `http://127.0.0.1:8080/api/institutions/${localStorage.getItem(
-      "userLogado"
-)}/password`,
->>>>>>> a0f9da041d74dfd174bd0bc337ef64ee12b50b2c
     {
       headers: {
         'Content-Type': 'application/json'
