@@ -5,10 +5,15 @@ const updateEmail = document.getElementById("updateEmail")
 updateEmail.onclick= changeEmail;
 
 function changeEmail() {
-  let data={};
-  data.email = document.getElementById("newEmail").value;
-  fetch(
-    `http://127.0.0.1:8080/api/institutions/${localStorage.getItem(
+  const email = document.getElementById("email_change").value;
+  let endpoint;
+  if (role === "ROLE_INSTITUTION") {
+    endpoint = "institution";
+  }
+  if (role === "ROLE_TOWNHALL") {
+    endpoint = "townhall";
+  }
+  fetch(`http://127.0.0.1:8080/api/${endpoint}/${localStorage.getItem(
       "userLogado"
     )}`,
     {
@@ -29,6 +34,20 @@ function changeEmail() {
 }
 
 function changePassword() {
+<<<<<<< HEAD
+  const password = document.getElementById("password_change").value;
+  const confirmPassword = document.getElementById("password_confirm").value;
+  let endpoint;
+  if (role === "ROLE_INSTITUTION") {
+    endpoint = "institution";
+  }
+  if (role === "ROLE_TOWNHALL") {
+    endpoint = "townhall";
+  }
+  fetch(`http://127.0.0.1:8080/api/${endpoint}/${localStorage.getItem(
+    "userLogado"
+  )}/password`,
+=======
   let data= {};
   data.password = document.getElementById("newPass").value;
    data.confirmPassword = document.getElementById("confirmPass").value;
@@ -37,6 +56,7 @@ function changePassword() {
     `http://127.0.0.1:8080/api/institutions/${localStorage.getItem(
       "userLogado"
 )}/password`,
+>>>>>>> a0f9da041d74dfd174bd0bc337ef64ee12b50b2c
     {
       headers: {
         'Content-Type': 'application/json'
@@ -80,3 +100,24 @@ window.onload = function () {
   }).catch(err => console.error(err));
  
 };
+
+window.onload = function () {
+  const role = localStorage.getItem("RoleLogado");
+  const user = localStorage.getItem("userLogado");
+  let endpoint;
+  if (role === "ROLE_INSTITUTION") {
+    endpoint = "institution";
+  }
+  if (role === "ROLE_TOWNHALL") {
+    endpoint = "townhall";
+  }
+  fetch(`http://127.0.0.1:8080/api/${endpoint}/${user}`).then((response) => {
+    if (role === "ROLE_INSTITUTION") {
+      document.getElementById("instit_nome").innerHTML = response.name;
+    }
+    if (role === "ROLE_TOWNHALL") {
+      document.getElementById("Camara_Admin_Nome").innerHTML = response.name;
+    }
+  });
+};
+
