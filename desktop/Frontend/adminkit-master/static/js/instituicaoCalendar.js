@@ -89,7 +89,8 @@ const url="http://127.0.0.1:8080";
                                         'Content-Type': 'application/json'
                                     },
                                     method: 'PUT',
-                                    body: JSON.stringify(data)
+                                    body: JSON.stringify(data),
+                                    credentials: 'include'
                                 }).then(function(response) {
                                     if (!response.ok) {
                                         console.log(response.status); //=> number 100–599
@@ -127,6 +128,7 @@ const url="http://127.0.0.1:8080";
             fetch(url + '/api/activities/'+e.schedule.id, {
                 headers: { 'Content-Type': 'application/json' },
                 method: 'DELETE',
+                credentials: 'include'
             }).then(function(response) {
                 if (!response.ok) {
                     console.log(response.status); //=> number 100–599
@@ -374,7 +376,8 @@ const url="http://127.0.0.1:8080";
 fetch(url + '/api/activities', {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include'
     }).then(function(response) {
         if (!response.ok) {
             console.log(response.status); //=> number 100–599

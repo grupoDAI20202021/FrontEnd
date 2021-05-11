@@ -79,7 +79,8 @@ let SponsorListId = [];
                                         'Content-Type': 'application/json'
                                     },
                                     method: 'PUT',
-                                    body: JSON.stringify(data)
+                                    body: JSON.stringify(data),
+                                    credentials: 'include'
                                 }).then(function(response) {
                                     if (!response.ok) {
                                         console.log(response.status); //=> number 100–599
@@ -109,6 +110,7 @@ let SponsorListId = [];
 
                         fetch(url + '/api/activities/'+e.schedule.id, {
                             headers: { 'Content-Type': 'application/json' },
+                            credentials: 'include',
                             method: 'DELETE',
                         }).then(function(response) {
                             if (!response.ok) {
@@ -586,7 +588,9 @@ let activityType;
         });
         calendarList.innerHTML = html.join('\n');
 
-        fetch('http://127.0.0.1:8080/api/townhalls/' + localStorage.getItem("userLogado") + '/sponsors')
+        fetch('http://127.0.0.1:8080/api/townhalls/' + localStorage.getItem("userLogado") + '/sponsors',{
+            credentials: 'include'
+        })
             .then(res => res.json())
             .then((out) => {
                 $.each(out, function(index, value) {

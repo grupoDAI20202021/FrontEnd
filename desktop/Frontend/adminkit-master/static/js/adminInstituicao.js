@@ -116,7 +116,7 @@ $(document).ready(function() {
                     let a = selecionado[0].innerHTML;
                     for (const value of data) {
                       if(value.email === a){
-                        await fetch(url + '/api/institutions/' + value.idInstitution+'/deactivate', { method: "PUT" })
+                        await fetch(url + '/api/institutions/' + value.idInstitution+'/deactivate', { method: "PUT", credentials: 'include' })
                         .then(function(response) {
                           if (!response.ok) {
                             console.log(response.status); //=> number 100â€“599
@@ -162,7 +162,8 @@ $(document).ready(function() {
       fetch(url + '/api/institutions', {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include'
     }).then(function(response) {
         if (!response.ok) {
             console.log(response.status); //=> number 100–599
@@ -196,7 +197,9 @@ $(document).ready(function() {
 
 
   function fillCheckbox() {
-    fetch('http://127.0.0.1:8080/api/townhalls')
+    fetch('http://127.0.0.1:8080/api/townhalls',{
+      credentials: 'include'
+    })
         .then(res => res.json())
         .then((out) => {
             $('#checkboxCamara').empty();
