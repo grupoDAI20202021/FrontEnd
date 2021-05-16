@@ -145,11 +145,28 @@ $(document).ready(function() {
     
       addcamara.addEventListener("click", function() {
       
+        if(document.getElementById("email-box").value=="".trim()||document.getElementById("password-box").value=="".trim()||document.getElementById("morada-box").value=="".trim()||document.getElementById("confirmPassword-box").value=="".trim()||document.getElementById("nome-box").value=="".trim()){
+          swal({
+            title: "Preencha todos os dados!",
+            icon: "warning",
+          });
+        }else {
+          if( document.getElementById("password-box").value!=  document.getElementById("confirmPassword-box").value) {
+            swal({
+              title: "Password não são idênticas!",
+              icon: "warning",
+            });
+            document.getElementById("password-box").value="";
+            document.getElementById("confirmPassword-box").value="";
+          } else {
+
        let data = {};
       let email= document.getElementById("email-box").value;
       let name = document.getElementById("nome-box").value;
       let address = document.getElementById("morada-box").value;
+
         let townhall = document.getElementById("checkboxCamara").options[document.getElementById("checkboxCamara").selectedIndex].text;
+        console.log(document.getElementById("checkboxCamara").value)
       data.idTownHall = document.getElementById("checkboxCamara").value;
        data.email = document.getElementById("email-box").value;
        data.password = document.getElementById("password-box").value;
@@ -170,6 +187,11 @@ $(document).ready(function() {
             console.log(response.statusText); //=> String
             console.log(response.headers); //=> Headers
             console.log(response.url); //=> String
+            document.getElementById("addInstitutionForm").reset();
+            swal({
+              title: "Dados inválidos!",
+              icon: "error",
+            });
         }
         else {
          
@@ -186,8 +208,15 @@ $(document).ready(function() {
     }).then(function(result) {
         console.log(result);
     }).catch(function(err) {
+     // document.getElementById("addTownHallForm").reset();
+      swal({
+        title: "Dados inválidos!",
+        icon: "error",
+      });
         console.error(err);
     });
+  }
+}
     })
     ;
   });

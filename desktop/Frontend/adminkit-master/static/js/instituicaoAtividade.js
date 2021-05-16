@@ -23,6 +23,12 @@ function closeForm(){
         icon: "info",
       });
     }else {
+      if(document.getElementById("commentInput").value=="".trim()){
+        swal({
+          title: "Preencha todos os dados!",
+          icon: "info",
+        });
+      }else {
       presence.evaluation= input;
       fetch(url + '/api/activities/' + localStorage.getItem("idActivity") + '/evaluation/', {
         headers: { 'Content-Type': 'application/json' },
@@ -43,7 +49,7 @@ function closeForm(){
     }).catch(function(err) {
         console.error(err);
     });
-
+  
 
    
    let datatable = document.getElementsByClassName("fullRow");
@@ -103,6 +109,7 @@ function closeForm(){
       }
       closeForm();
     }
+  }
   }
     
   

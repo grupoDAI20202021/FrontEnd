@@ -109,17 +109,7 @@ const url="http://127.0.0.1:8080";
                                     alert("Submission error");
                                     console.error(err);
                                 });
-           /* var schedule = e.schedule;
-            var changes = e.changes;
-
-            console.log('beforeUpdateSchedule', changes);
-
-            if (changes && !changes.isAllDay && schedule.category === 'allday') {
-                changes.category = 'time';
-            }*/
-
-            //cal.updateSchedule(schedule.id, schedule.calendarId, changes);
-            //refreshScheduleVisibility();
+           
         }
         },
         'beforeDeleteSchedule': function(e) {
@@ -372,6 +362,15 @@ const url="http://127.0.0.1:8080";
         data.idActivityType=calendar.id;
         data.idInstitution= localStorage.getItem("userLogado");
         console.log(data);
+        if(scheduleData.location=="".trim()){
+            swal({
+                title: "Insira todos os dados!",
+                icon: "info",
+            });
+        }
+            else {
+                
+        
         if(data.init_data>currentDate){
 fetch(url + '/api/activities', {
         headers: { 'Content-Type': 'application/json' },
@@ -396,7 +395,7 @@ fetch(url + '/api/activities', {
         console.error(err);
     });
 
-        var schedule = {
+       /* var schedule = {
             id: String(chance.guid()),
             title: scheduleData.title,
             isAllDay: scheduleData.isAllDay,
@@ -423,8 +422,14 @@ fetch(url + '/api/activities', {
 
         cal.createSchedules([schedule]);
 
-        refreshScheduleVisibility();
+        refreshScheduleVisibility();*/
+    } else {
+        swal({
+            title: "Data inválida!",
+            icon: "warning",
+        });
     }
+}
     }
 
     function onChangeCalendars(e) { // clicar no botao "view all"

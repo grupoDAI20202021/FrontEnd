@@ -188,7 +188,18 @@ defaultBtn.addEventListener("change", function() {
 
 
 async function submit() {
-    console.log(formData)
+    if(pic==""){
+        swal({
+            title: "Escolha uma imagem!",
+            icon: "warning",
+        });
+    }else {
+        if(document.getElementById("inputName")|| document.getElementById("inputContact")){
+            swal({
+                title: "Preencha todos os dados!",
+                icon: "info",
+            });
+        } else {
     let data = {};
     data.name = document.getElementById("inputName").value;
     data.contact = document.getElementById("inputContact").value;
@@ -206,6 +217,11 @@ async function submit() {
             console.log(response.statusText); //=> String
             console.log(response.headers); //=> Headers
             console.log(response.url); //=> String
+            document.getElementById("addSponsorForm1").reset();
+            swal({
+              title: "Dados inválidos!",
+              icon: "error",
+            });
         } else {
             console.log(response);
 
@@ -229,6 +245,8 @@ async function submit() {
         openForm();
         console.error(err);
     });
+}
+    }
 }
 
 

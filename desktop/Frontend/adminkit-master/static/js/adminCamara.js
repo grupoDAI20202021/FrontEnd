@@ -165,7 +165,21 @@ $(document).ready(function() {
 let addcamara = document.getElementById("addcamara-btn");
     
     addcamara.addEventListener("click", function() {
-    
+    if(document.getElementById("email-txt").value=="".trim()||document.getElementById("password-txt").value=="".trim()||document.getElementById("morada-txt").value=="".trim()||document.getElementById("confirmPassword-txt").value=="".trim()||document.getElementById("nome-txt").value=="".trim()){
+      swal({
+        title: "Preencha todos os dados!",
+        icon: "warning",
+      });
+    }else {
+      if( document.getElementById("password-txt").value!=  document.getElementById("confirmPassword-txt").value) {
+        swal({
+          title: "Password não são idênticas!",
+          icon: "warning",
+        });
+        document.getElementById("password-txt").value="";
+        document.getElementById("confirmPassword-txt").value="";
+      } else {
+
      let data = {};
     let email= document.getElementById("email-txt").value;
     let name = document.getElementById("nome-txt").value;
@@ -189,6 +203,11 @@ let addcamara = document.getElementById("addcamara-btn");
           console.log(response.statusText); //=> String
           console.log(response.headers); //=> Headers
           console.log(response.url); //=> String
+          document.getElementById("addTownHallForm").reset();
+          swal({
+            title: "Dados inválidos!",
+            icon: "error",
+          });
       }
       else {
        
@@ -198,13 +217,16 @@ let addcamara = document.getElementById("addcamara-btn");
         });
         var table = $('#Table-town-hall').DataTable();
         table.row.add( { 0:email,1:name,2:address}).draw();
-//table.draw();
-        // window.location.href="AdminCamara.html"  // provisorio
             }
           
   }).then(function(result) {
       console.log(result);
   }).catch(function(err) {
-      console.error(err);
+    swal({
+      title: "Dados inválidos!",
+      icon: "error",
+    });
   });
+}
+    }
   })
